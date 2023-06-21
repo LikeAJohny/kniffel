@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One');
+
+:root {
+	--primary-color: #302ae6;
+	--secondary-color: #536390;
+	--font-color: #424242;
+	--bg-color: #fff;
+	--heading-color: #292922;
+}
+
+[data-theme='dark'] {
+	--primary-color: #9a97f3;
+	--secondary-color: #818cab;
+	--font-color: #e1e1ff;
+	--bg-color: #161625;
+	--heading-color: #818cab;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	background-color: var(--bg-color);
+	color: var(--font-color);
+}
+
+h1 {
+	color: var(--heading-color);
+	font-family: 'Sansita One', serif;
+	font-size: 2rem;
+	margin-bottom: 1vh;
+}
+
+a {
+	color: var(--primary-color);
+	text-decoration: none;
+	border-bottom: 3px solid transparent;
+	font-weight: bold;
+
+	&:hover,
+	&:focus {
+		border-bottom: 3px solid currentColor;
+	}
+}
+
+.container {
+	--max-width: 1110px;
+	--padding: 1rem;
+
+	width: min(var(--max-width), 100% - (var(--padding) * 2));
+	margin-inline: auto;
+}
+
+// button,
+// .btn {
+// 	padding: 1rem;
+// 	background-color: var(--primary-color);
+// 	color: white;
+// 	border: 1px solid var(--secondary-color);
+// 	border-radius: 0.5rem;
+// 	cursor: pointer;
+
+// 	&:hover {
+// 		background-color: var(--secondary-color);
+// 	}
+
+// 	&:focus,
+// 	&:active {
+// 		box-shadow: inset 1px 1px 3px 1px #000000;
+// 	}
+// }
+
+// a:is(.btn) {
+// 	text-decoration: none;
+
+// 	&:hover,
+// 	&:focus {
+// 		border: 1px solid var(--secondary-color);
+// 	}
+// }
+
+a:has(h1) {
+	border: none;
+
+	&:hover,
+	&:focus {
+		border: none;
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap; /* added line */
+	border: 0;
+}
+
+// Form
+form {
+	display: grid;
+	gap: 1rem;
+	max-width: 30rem;
+	margin: 0 auto;
+	padding: 1rem;
+
+	input,
+	select {
+		width: 100%;
+		padding: 1rem;
+		background-color: var(--secondary-color);
+		border: 1px solid var(--font-color);
+		border-radius: 0.5rem;
+		text-align: center;
+
+		&::placeholder {
+			color: var(--font-color);
+		}
+	}
+
+	button {
+		padding: 1rem;
+		border-radius: 0.5rem;
+		background-color: var(--primary-color);
+	}
+}

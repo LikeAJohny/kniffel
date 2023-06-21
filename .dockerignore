@@ -1,0 +1,9 @@
+node_modules
+.eslintignore
+.eslintrc.cjs
+.gitignore
+.prettierignore
+.prettierrc
+Dockerfile
+playwright.config.ts
+README.md
