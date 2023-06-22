@@ -119,7 +119,7 @@ export const createSession = (
 			variant,
 			games: Array(numberOfGames)
 				.fill(
-					variant.name == 'kniffel'
+					variant.name === 'Kniffel'
 						? structuredClone(initialKniffel)
 						: structuredClone(initialKniffelExtreme)
 				)

@@ -5,31 +5,78 @@
 	$: ({ kniffelSessions, kniffelExtremeSessions } = data);
 </script>
 
-<section id="session">
+<section id="sessions">
 	<div class="container">
 		<h2>Kniffel</h2>
-		{#if kniffelSessions}
-			<ul>
+		<div class="sessions">
+			{#if kniffelSessions}
 				{#each kniffelSessions as kniffelSession}
-					<li>
-						{kniffelSession.player.name}: {kniffelSession.score}
-					</li>
+					<div class="session">
+						<header class="session-header">
+							{kniffelSession?.player?.name} - {new Date(
+								kniffelSession.finished_at
+							).toLocaleDateString()}
+						</header>
+						<details>
+							<summary>
+								Score: {kniffelSession.score}
+							</summary>
+							Detailed Scores TBA
+						</details>
+					</div>
 				{/each}
-			</ul>
-		{/if}
-
+			{/if}
+		</div>
 		<h2>Kniffel Extreme</h2>
-		{#if kniffelExtremeSessions}
-			<ul>
+		<div class="sessions">
+			{#if kniffelExtremeSessions}
 				{#each kniffelExtremeSessions as kniffelExtremeSession}
-					<li>
-						{kniffelExtremeSession.player.name}: {kniffelExtremeSession.score}
-					</li>
+					<div class="session">
+						<header class="session-header">
+							{kniffelExtremeSession?.player?.name} - {new Date(
+								kniffelExtremeSession.finished_at
+							).toLocaleDateString()}
+						</header>
+						<details>
+							<summary>
+								Score: {kniffelExtremeSession.score}
+							</summary>
+							Detailed Scores TBA
+						</details>
+					</div>
 				{/each}
-			</ul>
-		{/if}
+			{/if}
+		</div>
 	</div>
 </section>
 
-<style>
+<style lang="scss">
+	#sessions {
+		display: grid;
+		gap: 1rem;
+
+		h2 {
+			font-size: 1.5rem;
+			margin: 1rem 0;
+		}
+
+		.sessions {
+			padding: 1rem 0;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1rem;
+
+			.session {
+				padding: 1rem;
+				display: grid;
+				gap: 1rem;
+				border: 1px solid var(--primary-color);
+
+				.session-header {
+					font-size: 1.25rem;
+					border-bottom: 1px solid var(--primary-color);
+				}
+			}
+		}
+	}
 </style>

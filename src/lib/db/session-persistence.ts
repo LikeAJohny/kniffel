@@ -4,20 +4,21 @@ import type { KniffelExtremeGame, KniffelGame, Session } from '@/types/kniffel';
 export const persistSession = async (supabase: SupabaseClient, session: Session) => {
 	const { data: sessionData, error: sessionError } = await supabase
 		.from('sessions')
-		.upsert(mapSessionToDb(session))
+		.insert(mapSessionToDb(session))
 		.select();
 
 	if (sessionError) console.error(sessionError.message);
+	if (!sessionData) return;
 
-	const games: any = session.games.map((game, i) => ({
-		...(session.variant?.name == 'kniffel'
+	const games = session.games.map((game, i) => ({
+		...(session.variant?.name === 'Kniffel'
 			? mapKniffelGamesToDb(game, sessionData[i].id)
 			: mapKniffelExtremeGamesToDb(game, sessionData[i].id))
 	}));
 
 	const { error: gamesError } = await supabase
-		.from(session.variant?.name == 'kniffel' ? 'kniffel_games' : 'kniffel_extreme_games')
-		.upsert(games)
+		.from(session.variant?.name === 'Kniffel' ? 'kniffel_games' : 'kniffel_extreme_games')
+		.insert(games)
 		.select();
 
 	if (gamesError) console.error(gamesError.message);
