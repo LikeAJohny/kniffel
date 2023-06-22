@@ -3,7 +3,8 @@
 	import { page } from '$app/stores';
 	import { onMount, setContext } from 'svelte';
 	import { get } from 'svelte/store';
-	import Sheet from '../../components/Kniffel/Sheet.svelte';
+	import KniffelSheet from '../../components/Kniffel/KniffelSheet.svelte';
+	import KniffelExtremeSheet from '../../components/KniffelExtreme/KniffelExtremeSheet.svelte';
 	import { createSession } from '../../stores/session.store';
 
 	const player = JSON.parse($page.url.searchParams.get('player') as string);
@@ -18,4 +19,8 @@
 	});
 </script>
 
-<Sheet />
+{#if variant == 'kniffel'}
+	<KniffelSheet />
+{:else}
+	<KniffelExtremeSheet />
+{/if}

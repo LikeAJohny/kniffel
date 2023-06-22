@@ -1,7 +1,7 @@
 import { writable, type Writable } from 'svelte/store';
-import type { Game, Player, Session, Variant } from '../types';
+import type { KniffelExtremeGame, KniffelGame, Player, Session, Variant } from '../types';
 
-const initialGame: Game = {
+const initialKniffel: KniffelGame = {
 	id: null,
 	number: 0,
 	status: 'running',
@@ -37,6 +37,51 @@ const initialGame: Game = {
 	}
 };
 
+const initialKniffelExtreme: KniffelExtremeGame = {
+	id: null,
+	number: 0,
+	status: 'running',
+	scores: {
+		upper: {
+			ones: null,
+			twos: null,
+			threes: null,
+			fours: null,
+			fives: null,
+			sixes: null
+		},
+		lower: {
+			threeOfAKind: null,
+			fourOfAKind: null,
+			twoPairs: null,
+			threePairs: null,
+			twoThrees: null,
+			fullHouse: null,
+			largeFullHouse: null,
+			smallStraight: null,
+			largeStraight: null,
+			highway: null,
+			yahtzee: null,
+			yahtzeeExtreme: null,
+			tenOrLess: null,
+			thirtyThreeOrMore: null,
+			chance: null,
+			superChance: null
+		}
+	},
+	results: {
+		upper: {
+			sum: 0,
+			bonus: 0,
+			total: 0
+		},
+		lower: {
+			total: 0
+		},
+		total: 0
+	}
+};
+
 const initialSession: Session = {
 	id: null,
 	player: null,
@@ -50,7 +95,7 @@ const initialSession: Session = {
 };
 
 export type SessionStore = Writable<Session> & {
-	updateGame: (game: Game) => void;
+	updateGame: (game: KniffelGame) => void;
 };
 
 export const createSession = (
@@ -73,7 +118,11 @@ export const createSession = (
 			player,
 			variant,
 			games: Array(numberOfGames)
-				.fill(structuredClone(initialGame))
+				.fill(
+					variant.name == 'kniffel'
+						? structuredClone(initialKniffel)
+						: structuredClone(initialKniffelExtreme)
+				)
 				.map((game, index) => ({
 					...game,
 					number: index
@@ -97,7 +146,7 @@ export const createSession = (
 		localStorage.setItem('session', JSON.stringify(sessionState));
 	});
 
-	const updateGame = (game: Game) => {
+	const updateGame = (game: KniffelGame) => {
 		update((sessionState) => {
 			const games = sessionState.games.map((sg) => (game.number === sg.number ? game : sg));
 			const score = games.reduce((sum, game) => sum + (game.results.total || 0), 0);

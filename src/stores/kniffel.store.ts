@@ -1,5 +1,5 @@
 import { derived, writable } from 'svelte/store';
-import type { Game } from '../types';
+import type { KniffelGame } from '../types';
 
 const initalScores = {
 	upper: {
@@ -29,7 +29,7 @@ export const createGame = (number: number) => {
 		initial = JSON.parse(storedSession).games[number].scores;
 	}
 
-	const scores = writable<Game['scores']>(initial);
+	const scores = writable<KniffelGame['scores']>(initial);
 
 	const results = derived(scores, ($scores) => {
 		const uSum = Object.values($scores.upper).reduce((a, b) => (a || 0) + (b || 0), 0) || 0;

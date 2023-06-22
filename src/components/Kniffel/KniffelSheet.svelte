@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import board from '../../assets/kniffel-board.json';
-	import Game from './KniffelGame.svelte';
 	import { destroySession, type SessionStore } from '../../stores/session.store';
 	import { goto } from '$app/navigation';
+	import KniffelGame from './KniffelGame.svelte';
 
 	const session = getContext<SessionStore>('session');
 
@@ -78,7 +78,7 @@
 		</aside>
 		<div class="games">
 			{#each $session?.games as game}
-				<Game number={game.number} on:gameUpdate={(e) => session?.updateGame(e.detail)} />
+				<KniffelGame number={game.number} on:gameUpdate={(e) => session?.updateGame(e.detail)} />
 			{/each}
 		</div>
 	</section>

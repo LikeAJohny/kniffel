@@ -1,4 +1,4 @@
-import type { Game, Session } from '../../types';
+import type { KniffelExtremeGame, KniffelGame, Session } from '../../types';
 
 export const persistSession = async (supabase, session: Session) => {
 	const { data: sessionData, error: sessionError } = await supabase
@@ -6,25 +6,20 @@ export const persistSession = async (supabase, session: Session) => {
 		.upsert(mapSessionToDb(session))
 		.select();
 
-	if (sessionError) throw new Error(sessionError.message);
+	if (sessionError) console.error(sessionError.message);
 
-	const games: any = session.games.map((game) => mapGameToDb(game, sessionData[0].id));
+	const games: any = session.games.map((game, i) => ({
+		...(session.variant?.name == 'kniffel'
+			? mapKniffelGamesToDb(game, sessionData[i].id)
+			: mapKniffelExtremeGamesToDb(game, sessionData[i].id))
+	}));
 
-	const { data: gamesData, error: gamesError } = await supabase
-		.from('games')
+	const { error: gamesError } = await supabase
+		.from(session.variant?.name == 'kniffel' ? 'kniffel_games' : 'kniffel_extreme_games')
 		.upsert(games)
 		.select();
 
-	if (gamesError) throw new Error(gamesError.message);
-
-	const scores: any = session.games.map((game, i) => ({
-		...mapKniffelScoresToDb(game),
-		game_id: gamesData[i].id
-	}));
-
-	const { error: scoresError } = await supabase.from('kniffel_scores').upsert(scores).select();
-
-	if (scoresError) throw new Error(scoresError.message);
+	if (gamesError) console.error(gamesError.message);
 };
 
 const mapSessionToDb = (session: Session) => {
@@ -38,16 +33,9 @@ const mapSessionToDb = (session: Session) => {
 	};
 };
 
-const mapGameToDb = (game: Game, sessionId: string) => {
+const mapKniffelGamesToDb = (game: KniffelGame, sessionId: string) => {
 	return {
 		session_id: sessionId,
-		number: game.number
-	};
-};
-
-const mapKniffelScoresToDb = (game: Game) => {
-	return {
-		game_id: game.id,
 		ones: game.scores.upper.ones,
 		twos: game.scores.upper.twos,
 		threes: game.scores.upper.threes,
@@ -61,6 +49,39 @@ const mapKniffelScoresToDb = (game: Game) => {
 		large_straight: game.scores.lower.largeStraight,
 		yahtzee: game.scores.lower.yahtzee,
 		chance: game.scores.lower.chance,
+		upper_sum: game.results.upper.sum,
+		upper_bonus: game.results.upper.bonus,
+		upper_total: game.results.upper.total,
+		lower_total: game.results.lower.total,
+		game_total: game.results.total
+	};
+};
+
+const mapKniffelExtremeGamesToDb = (game: KniffelExtremeGame, sessionId: string) => {
+	return {
+		session_id: sessionId,
+		ones: game.scores.upper.ones,
+		twos: game.scores.upper.twos,
+		threes: game.scores.upper.threes,
+		fours: game.scores.upper.fours,
+		fives: game.scores.upper.fives,
+		sixes: game.scores.upper.sixes,
+		three_of_a_kind: game.scores.lower.threeOfAKind,
+		four_of_a_kind: game.scores.lower.fourOfAKind,
+		two_pairs: game.scores.lower.twoPairs,
+		three_pairs: game.scores.lower.threePairs,
+		two_threes: game.scores.lower.twoThrees,
+		full_house: game.scores.lower.fullHouse,
+		large_full_house: game.scores.lower.largeFullHouse,
+		small_straight: game.scores.lower.smallStraight,
+		large_straight: game.scores.lower.largeStraight,
+		highway: game.scores.lower.highway,
+		yahtzee: game.scores.lower.yahtzee,
+		yahtzee_extreme: game.scores.lower.yahtzeeExtreme,
+		ten_or_less: game.scores.lower.tenOrLess,
+		thirty_tree_or_more: game.scores.lower.thirtyThreeOrMore,
+		chance: game.scores.lower.chance,
+		super_chance: game.scores.lower.superChance,
 		upper_sum: game.results.upper.sum,
 		upper_bonus: game.results.upper.bonus,
 		upper_total: game.results.upper.total,
