@@ -1,6 +1,7 @@
+import type { SupabaseClient } from '@supabase/supabase-js';
 import type { KniffelExtremeGame, KniffelGame, Session } from '../../types';
 
-export const persistSession = async (supabase, session: Session) => {
+export const persistSession = async (supabase: SupabaseClient, session: Session) => {
 	const { data: sessionData, error: sessionError } = await supabase
 		.from('sessions')
 		.upsert(mapSessionToDb(session))

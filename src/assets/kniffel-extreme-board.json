@@ -4,37 +4,37 @@
 			"name": "ones",
 			"title": "Einser",
 			"image": null,
-			"rule": "Nur Einser zählen"
+			"rule": "nur Einser zählen"
 		},
 		{
 			"name": "twos",
 			"title": "Zweier",
 			"image": null,
-			"rule": "Nur Zweier zählen"
+			"rule": "nur Zweier zählen"
 		},
 		{
 			"name": "threes",
 			"title": "Dreier",
 			"image": null,
-			"rule": "Nur Dreier zählen"
+			"rule": "nur Dreier zählen"
 		},
 		{
 			"name": "fours",
 			"title": "Vierer",
 			"image": null,
-			"rule": "Nur Vierer zählen"
+			"rule": "nur Vierer zählen"
 		},
 		{
 			"name": "fives",
 			"title": "Fünfer",
 			"image": null,
-			"rule": "Nur Fünfer zählen"
+			"rule": "nur Fünfer zählen"
 		},
 		{
 			"name": "sixes",
 			"title": "Sechser",
 			"image": null,
-			"rule": "Nur Sechser zählen"
+			"rule": "nur Sechser zählen"
 		}
 	],
 	"lower": [
@@ -42,97 +42,97 @@
 			"name": "threeOfAKind",
 			"title": "Dreierpasch",
 			"image": null,
-			"rule": "Regel"
+			"rule": "alle Augen zählen"
 		},
 		{
 			"name": "fourOfAKind",
 			"title": "Viererpasch",
 			"image": null,
-			"rule": "Regel"
+			"rule": "alle augen Zählen"
 		},
 		{
 			"name": "twoPairs",
 			"title": "Zwei Paare",
 			"image": null,
-			"rule": "Regel"
+			"rule": "alle Augen zählen"
 		},
 		{
 			"name": "threePairs",
 			"title": "Drei Paare",
 			"image": null,
-			"rule": "Regel"
+			"rule": "35 Punkte"
 		},
 		{
 			"name": "twoThrees",
 			"title": "Zwei Dreier",
 			"image": null,
-			"rule": "Regel"
+			"rule": "45 Punkte"
 		},
 		{
 			"name": "fullHouse",
 			"title": "Full House",
 			"image": null,
-			"rule": "Regel"
+			"rule": "25 Punkte"
 		},
 		{
 			"name": "largeFullHouse",
 			"title": "Großes Full House",
 			"image": null,
-			"rule": "Regel"
+			"rule": "45 Punkte"
 		},
 		{
 			"name": "smallStreet",
 			"title": "Kleine Straße",
 			"image": null,
-			"rule": "Regel"
+			"rule": "30 Punkte"
 		},
 		{
 			"name": "largeStreet",
 			"title": "Große Straße",
 			"image": null,
-			"rule": "Regel"
+			"rule": "40 Punkte"
 		},
 		{
 			"name": "highway",
 			"title": "Highway",
 			"image": null,
-			"rule": "Regel"
+			"rule": "50 Punkte"
 		},
 		{
 			"name": "kniffel",
 			"title": "Kniffel",
 			"image": null,
-			"rule": "Regel"
+			"rule": "50 Punkte"
 		},
 		{
 			"name": "kniffelExtreme",
 			"title": "Kniffel Extreme",
 			"image": null,
-			"rule": "Regel"
+			"rule": "75 Punkte"
 		},
 		{
 			"name": "tenOrLess",
 			"title": "10 oder weniger",
 			"image": null,
-			"rule": "Regel"
+			"rule": "40 Punkte"
 		},
 		{
 			"name": "thirtyThreeOrMore",
 			"title": "33 oder mehr",
 			"image": null,
-			"rule": "Regel"
+			"rule": "40 Punkte"
 		},
 		{
 			"name": "chance",
 			"title": "Chance",
 			"image": null,
-			"rule": "Regel"
+			"rule": "alle Augen zählen"
 		},
 		{
 			"name": "superChance",
 			"title": "Super Chance",
 			"image": null,
-			"rule": "Regel"
+			"rule": "alle Augen zählen x2"
 		}
 	]
 }

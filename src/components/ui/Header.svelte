@@ -185,7 +185,6 @@
 
 		.mobile-nav-toggle {
 			display: block;
-			position: fixed;
 			right: 1rem;
 			z-index: 100;
 			cursor: pointer;
