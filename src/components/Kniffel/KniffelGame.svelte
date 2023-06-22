@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import { createGame } from '../../stores/kniffel.store';
+	import { createGame } from '@stores/kniffel.store';
 
 	export let number: number;
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import board from '../../assets/kniffel-board.json';
+	import board from '@assets/kniffel-board.json';
 	import Game from './KniffelGame.svelte';
-	import { destroySession, type SessionStore } from '../../stores/session.store';
+	import { destroySession, type SessionStore } from '@stores/session.store';
 	import { goto } from '$app/navigation';
 
 	const session = getContext<SessionStore>('session');

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { destroySession } from '../stores/session.store';
-	import type { Player, Variant } from '../types';
+	import { destroySession } from '@stores/session.store';
+	import type { Variant } from '@/types/kniffel';
 
 	export let data;
 	let { player, variants } = data;

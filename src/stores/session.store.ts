@@ -1,5 +1,5 @@
 import { writable, type Writable } from 'svelte/store';
-import type { KniffelExtremeGame, KniffelGame, Player, Session, Variant } from '../types';
+import type { KniffelExtremeGame, KniffelGame, Player, Session, Variant } from '@/types/kniffel';
 
 const initialKniffel: KniffelGame = {
 	id: null,

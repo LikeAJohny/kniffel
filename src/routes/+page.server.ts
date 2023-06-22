@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import type { Player } from '../types.js';
+import type { Player } from '@/types/kniffel';
 
 export async function load({ locals: { supabase } }) {
 	const user = await supabase.auth.getUser();

@@ -1,5 +1,5 @@
 import { derived, writable } from 'svelte/store';
-import type { KniffelGame } from '../types';
+import type { KniffelGame } from '@/types/kniffel';
 
 const initalScores = {
 	upper: {

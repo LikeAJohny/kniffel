@@ -1,17 +1,29 @@
 <script>
 	export let data;
 
-	let { sessions } = data;
-	$: ({ sessions } = data);
+	let { kniffelSessions, kniffelExtremeSessions } = data;
+	$: ({ kniffelSessions, kniffelExtremeSessions } = data);
 </script>
 
 <section id="session">
 	<div class="container">
-		{#if sessions}
+		<h2>Kniffel</h2>
+		{#if kniffelSessions}
 			<ul>
-				{#each sessions as session}
+				{#each kniffelSessions as kniffelSession}
 					<li>
-						{session.player.name}: {session.score}
+						{kniffelSession.player.name}: {kniffelSession.score}
+					</li>
+				{/each}
+			</ul>
+		{/if}
+
+		<h2>Kniffel Extreme</h2>
+		{#if kniffelExtremeSessions}
+			<ul>
+				{#each kniffelExtremeSessions as kniffelExtremeSession}
+					<li>
+						{kniffelExtremeSession.player.name}: {kniffelExtremeSession.score}
 					</li>
 				{/each}
 			</ul>

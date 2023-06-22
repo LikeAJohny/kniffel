@@ -1,9 +1,31 @@
 export async function load({ locals: { supabase } }) {
-	const { data: sessions } = await supabase.from('sessions').select(`
-    *,
-    player: players(*),
-    games(*, scores:kniffel_scores(*))
-  `);
+	const { data: variants } = await supabase.from('game_variants').select();
+	const kniffelVariant = variants?.find((variant) => variant.name === 'Kniffel');
+	const kniffelExtremeVariant = variants?.find((variant) => variant.name === 'Kniffel Extreme');
 
-	return { sessions };
+	const { data: kniffelSessions } = await supabase
+		.from('sessions')
+		.select(
+			`
+        *,
+        player: players(*),
+        games: kniffel_games(*)
+      `
+		)
+		.eq('variant_id', kniffelVariant.id);
+
+	const { data: kniffelExtremeSessions } = await supabase
+		.from('sessions')
+		.select(
+			`
+        *,
+        player: players(*),
+        games: kniffel_extreme_games(*)
+      `
+		)
+		.eq('variant_id', kniffelExtremeVariant.id);
+
+	console.log(kniffelSessions, kniffelExtremeSessions);
+
+	return { kniffelSessions, kniffelExtremeSessions };
 }

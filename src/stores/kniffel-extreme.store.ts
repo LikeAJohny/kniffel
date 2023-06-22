@@ -1,5 +1,5 @@
 import { derived, writable } from 'svelte/store';
-import type { KniffelExtremeGame } from '../types';
+import type { KniffelExtremeGame } from '@/types/kniffel';
 
 const initalScores: KniffelExtremeGame['scores'] = {
 	upper: {

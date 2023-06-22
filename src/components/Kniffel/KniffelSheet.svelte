@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
-	import board from '../../assets/kniffel-board.json';
-	import { destroySession, type SessionStore } from '../../stores/session.store';
+	import board from '@assets/kniffel-board.json';
+	import { destroySession, type SessionStore } from '@stores/session.store';
 	import { goto } from '$app/navigation';
 	import KniffelGame from './KniffelGame.svelte';
 

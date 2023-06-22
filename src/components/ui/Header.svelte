@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import iconClose from '../../assets/icon-close.svg';
-	import iconOpen from '../../assets/icon-hamburger.svg';
+	import iconClose from '@assets/icon-close.svg';
+	import iconOpen from '@assets/icon-hamburger.svg';
 	import ThemeSwitcher from './ThemeSwitcher.svelte';
 
 	let navOpen: boolean = false;
