@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { createGame } from '@stores/kniffel-extreme.store';
+	import NumberField from '@components/NumberField.svelte';
 
 	export let number: number;
 
@@ -15,14 +16,7 @@
 <div class="game">
 	<!-- Upper -->
 	{#each Object.entries($scores.upper) as [field, value]}
-		<div class="field">
-			<input
-				type="number"
-				id={`${number}-${field}`}
-				name={`${number}-${field}`}
-				bind:value={$scores.upper[field]}
-			/>
-		</div>
+		<NumberField bind:value={$scores.upper[field]} />
 	{/each}
 	<div class="field">{$results.upper.sum}</div>
 	<div class="field">{$results.upper.bonus}</div>
@@ -30,14 +24,7 @@
 	<hr />
 	<!-- Lower -->
 	{#each Object.keys($scores.lower) as field}
-		<div class="field">
-			<input
-				type="number"
-				id={`${number}-${field}`}
-				name={`${number}-${field}`}
-				bind:value={$scores.lower[field]}
-			/>
-		</div>
+		<NumberField bind:value={$scores.lower[field]} />
 	{/each}
 	<div class="field">{$results.lower.total}</div>
 	<div class="field">{$results.upper.total}</div>
