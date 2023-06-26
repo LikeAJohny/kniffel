@@ -3,8 +3,8 @@
 	import { page } from '$app/stores';
 	import { onMount, setContext } from 'svelte';
 	import { get } from 'svelte/store';
-	import KniffelSheet from '@components/Kniffel/KniffelSheet.svelte';
-	import KniffelExtremeSheet from '@components/KniffelExtreme/KniffelExtremeSheet.svelte';
+	import KniffelSheet from '@components/KniffelSheet.svelte';
+	import KniffelExtremeSheet from '@components/KniffelExtremeSheet.svelte';
 	import { createSession } from '@stores/session.store';
 
 	const player = JSON.parse($page.url.searchParams.get('player') as string);
