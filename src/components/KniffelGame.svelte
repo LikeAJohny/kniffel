@@ -1,6 +1,9 @@
 <script lang="ts">
+	import board from '@assets/kniffel-board.json';
 	import { createEventDispatcher } from 'svelte';
 	import { createGame } from '@stores/kniffel.store';
+	import NumberField from './NumberField.svelte';
+	import BoolField from './BoolField.svelte';
 
 	export let number: number;
 
@@ -14,30 +17,23 @@
 
 <div class="game">
 	<!-- Upper -->
-	{#each Object.entries($scores.upper) as [field, value]}
-		<div class="field">
-			<input
-				type="number"
-				id={`${number}-${field}`}
-				name={`${number}-${field}`}
-				bind:value={$scores.upper[field]}
-			/>
-		</div>
+	{#each board.upper as field}
+		{#if field.type === 'number'}
+			<NumberField bind:value={$scores.upper[field.name]} />
+		{/if}
 	{/each}
 	<div class="field">{$results.upper.sum}</div>
 	<div class="field">{$results.upper.bonus}</div>
 	<div class="field">{$results.upper.total}</div>
 	<hr />
 	<!-- Lower -->
-	{#each Object.keys($scores.lower) as field}
-		<div class="field">
-			<input
-				type="number"
-				id={`${number}-${field}`}
-				name={`${number}-${field}`}
-				bind:value={$scores.lower[field]}
-			/>
-		</div>
+	{#each board.lower as field}
+		{#if field.type === 'number'}
+			<NumberField bind:value={$scores.lower[field.name]} />
+		{/if}
+		{#if field.type === 'bool'}
+			<BoolField bind:value={$scores.lower[field.name]} score={field.score} />
+		{/if}
 	{/each}
 	<div class="field">{$results.lower.total}</div>
 	<div class="field">{$results.upper.total}</div>

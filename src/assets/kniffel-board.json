@@ -4,37 +4,43 @@
 			"name": "ones",
 			"title": "Einser",
 			"image": null,
-			"rule": "nur Einser zählen"
+			"rule": "nur Einser zählen",
+			"type": "number"
 		},
 		{
 			"name": "twos",
 			"title": "Zweier",
 			"image": null,
-			"rule": "nur Zweier zählen"
+			"rule": "nur Zweier zählen",
+			"type": "number"
 		},
 		{
 			"name": "threes",
 			"title": "Dreier",
 			"image": null,
-			"rule": "nur Dreier zählen"
+			"rule": "nur Dreier zählen",
+			"type": "number"
 		},
 		{
 			"name": "fours",
 			"title": "Vierer",
 			"image": null,
-			"rule": "nur Vierer zählen"
+			"rule": "nur Vierer zählen",
+			"type": "number"
 		},
 		{
 			"name": "fives",
 			"title": "Fünfer",
 			"image": null,
-			"rule": "nur Fünfer zählen"
+			"rule": "nur Fünfer zählen",
+			"type": "number"
 		},
 		{
 			"name": "sixes",
 			"title": "Sechser",
 			"image": null,
-			"rule": "nur Sechser zählen"
+			"rule": "nur Sechser zählen",
+			"type": "number"
 		}
 	],
 	"lower": [
@@ -42,44 +48,54 @@
 			"name": "threeOfAKind",
 			"title": "Dreierpasch",
 			"image": null,
-			"rule": "alle Augen zählen"
+			"rule": "alle Augen zählen",
+			"type": "number"
 		},
 		{
 			"name": "fourOfAKind",
 			"title": "Viererpasch",
 			"image": null,
-			"rule": "alle Augen zählen"
+			"rule": "alle augen Zählen",
+			"type": "number"
 		},
-
 		{
 			"name": "fullHouse",
 			"title": "Full House",
 			"image": null,
-			"rule": "25 Punkte"
+			"rule": "25 Punkte",
+			"type": "bool",
+			"score": 25
 		},
 		{
-			"name": "smallStreet",
+			"name": "smallStraight",
 			"title": "Kleine Straße",
 			"image": null,
-			"rule": "30 Punkte"
+			"rule": "30 Punkte",
+			"type": "bool",
+			"score": 30
 		},
 		{
-			"name": "largeStreet",
+			"name": "largeStraight",
 			"title": "Große Straße",
 			"image": null,
-			"rule": "40 Punkte"
+			"rule": "40 Punkte",
+			"type": "bool",
+			"score": 40
 		},
 		{
 			"name": "yahtzee",
 			"title": "Kniffel",
 			"image": null,
-			"rule": "50 Punkte"
+			"rule": "50 Punkte",
+			"type": "bool",
+			"score": 50
 		},
 		{
 			"name": "chance",
 			"title": "Chance",
 			"image": null,
-			"rule": "alle Augen zählen"
+			"rule": "alle Augen zählen",
+			"type": "number"
 		}
 	]
 }
