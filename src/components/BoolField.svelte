@@ -16,8 +16,8 @@
 
 <div class="field">
 	<div class="choice" class:open={choiceOpen}>
-		<button on:click={strike}>X</button>
-		<button on:click={check}>V</button>
+		<button class="strike" on:click={strike}>✖︎</button>
+		<button class="check" on:click={check}>✔︎</button>
 	</div>
 	<input
 		type="number"
@@ -37,24 +37,38 @@
 		position: relative;
 		width: 4em;
 		height: 2.5rem;
-		border: 0.5px solid var(--secondary-color);
+		border: 1px solid var(--secondary-color);
 		color: var(--font-color);
 
 		.choice {
 			position: absolute;
-			top: -100%;
+			top: 0;
 			left: 0;
-			width: 100%;
-			height: 100%;
+			width: calc(4rem - 2px);
+			height: calc(2.5rem - 2px);
 			display: none;
 			grid-template-columns: 1fr 1fr;
+			gap: 2px;
+			background-color: var(--secondary-color);
+			border-radius: 3px;
 
 			&.open {
 				display: grid;
 			}
 
 			button {
-				border: 1px solid var(--font-color);
+				border-radius: 3px;
+				border: none;
+
+				&.strike {
+					background-color: var(--bg-color);
+					color: var(--font-color);
+				}
+
+				&.check {
+					background-color: var(--primary-color);
+					color: white;
+				}
 			}
 		}
 

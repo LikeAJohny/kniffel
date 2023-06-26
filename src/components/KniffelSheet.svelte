@@ -108,6 +108,7 @@
 
 			.game-numbers {
 				display: flex;
+				gap: 1px;
 
 				.game-number {
 					width: 4rem;
@@ -122,8 +123,6 @@
 			grid-template-columns: 11rem auto;
 
 			aside {
-				border: 1px solid var(--secondary-color);
-
 				.field-info {
 					display: grid;
 					grid-template-columns: 50% 50%;
@@ -131,11 +130,6 @@
 					height: 2.5rem;
 					text-align: center;
 					font-size: 0.7rem;
-					border-bottom: 1px solid var(--secondary-color);
-
-					&:last-of-type {
-						border-bottom: none;
-					}
 
 					.title,
 					.rule {
@@ -145,17 +139,13 @@
 						width: 100%;
 						height: 100%;
 						padding: 0 0.5rem;
-					}
-
-					.title {
-						border-right: 1px solid var(--secondary-color);
+						border: 1px solid var(--secondary-color);
 					}
 				}
 			}
 
 			.games {
 				display: flex;
-				border: 1px solid var(--secondary-color);
 			}
 		}
 	}

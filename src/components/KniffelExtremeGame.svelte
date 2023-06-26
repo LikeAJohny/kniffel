@@ -55,23 +55,8 @@
 			align-items: center;
 			width: 4em;
 			height: 2.5rem;
-			border-bottom: 1px solid var(--secondary-color);
+			border: 1px solid var(--secondary-color);
 			color: var(--font-color);
-
-			&:last-of-type {
-				border-bottom: none;
-			}
-
-			input {
-				width: 100%;
-				height: 100%;
-				font-size: 1.1rem;
-				font-weight: 700;
-				text-align: center;
-				border: none;
-				background: none;
-				color: var(--font-color);
-			}
 		}
 	}
 </style>

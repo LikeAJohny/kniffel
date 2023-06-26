@@ -13,7 +13,7 @@
 		align-items: center;
 		width: 4em;
 		height: 2.5rem;
-		border-bottom: 0.5px solid var(--secondary-color);
+		border: 1px solid var(--secondary-color);
 		color: var(--font-color);
 
 		&:last-of-type {

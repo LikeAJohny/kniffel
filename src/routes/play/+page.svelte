@@ -19,7 +19,7 @@
 	});
 </script>
 
-{#if variant === 'Kniffel'}
+{#if variant.name === 'Kniffel'}
 	<KniffelSheet />
 {:else}
 	<KniffelExtremeSheet />
