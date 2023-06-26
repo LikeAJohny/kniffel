@@ -1,7 +1,9 @@
 <script lang="ts">
+	import board from '@assets/kniffel-extreme-board.json';
 	import { createEventDispatcher } from 'svelte';
 	import { createGame } from '@stores/kniffel-extreme.store';
 	import NumberField from '@components/NumberField.svelte';
+	import BoolField from './BoolField.svelte';
 
 	export let number: number;
 
@@ -15,16 +17,23 @@
 
 <div class="game">
 	<!-- Upper -->
-	{#each Object.entries($scores.upper) as [field, value]}
-		<NumberField bind:value={$scores.upper[field]} />
+	{#each board.upper as field}
+		{#if field.type === 'number'}
+			<NumberField bind:value={$scores.upper[field.name]} />
+		{/if}
 	{/each}
 	<div class="field">{$results.upper.sum}</div>
 	<div class="field">{$results.upper.bonus}</div>
 	<div class="field">{$results.upper.total}</div>
 	<hr />
 	<!-- Lower -->
-	{#each Object.keys($scores.lower) as field}
-		<NumberField bind:value={$scores.lower[field]} />
+	{#each board.lower as field}
+		{#if field.type === 'number'}
+			<NumberField bind:value={$scores.lower[field.name]} />
+		{/if}
+		{#if field.type === 'bool'}
+			<BoolField bind:value={$scores.lower[field.name]} score={field.score} />
+		{/if}
 	{/each}
 	<div class="field">{$results.lower.total}</div>
 	<div class="field">{$results.upper.total}</div>
