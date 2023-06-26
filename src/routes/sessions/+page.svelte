@@ -13,9 +13,10 @@
 				{#each kniffelSessions as kniffelSession}
 					<div class="session">
 						<header class="session-header">
-							{kniffelSession?.player?.name} - {new Date(
-								kniffelSession.finished_at
-							).toLocaleDateString()}
+							{kniffelSession?.name}
+							{#if kniffelSession.finished_at}
+								- {new Date(kniffelSession.finished_at).toLocaleDateString()}
+							{/if}
 						</header>
 						<details>
 							<summary>
@@ -33,9 +34,10 @@
 				{#each kniffelExtremeSessions as kniffelExtremeSession}
 					<div class="session">
 						<header class="session-header">
-							{kniffelExtremeSession?.player?.name} - {new Date(
-								kniffelExtremeSession.finished_at
-							).toLocaleDateString()}
+							{kniffelExtremeSession?.name}
+							{#if kniffelExtremeSessions.finished_at}
+								- {new Date(kniffelExtremeSession.finished_at).toLocaleDateString()}
+							{/if}
 						</header>
 						<details>
 							<summary>
