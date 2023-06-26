@@ -60,6 +60,7 @@
 			width: 4em;
 			height: 2.5rem;
 			border-bottom: 1px solid var(--secondary-color);
+			color: var(--font-color);
 
 			&:last-of-type {
 				border-bottom: none;
@@ -73,6 +74,7 @@
 				text-align: center;
 				border: none;
 				background: none;
+				color: var(--font-color);
 			}
 		}
 	}
