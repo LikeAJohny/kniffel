@@ -16,6 +16,9 @@
 </script>
 
 <div class="game">
+	<div class="game-number">
+		{$game.number + 1}. Spiel
+	</div>
 	<!-- Upper -->
 	{#each board.upper as field}
 		{#if field.type === 'number'}
@@ -42,11 +45,10 @@
 
 <style lang="scss">
 	.game {
-		width: max-content;
-		border-right: 1px solid var(--secondary-color);
-
-		&:last-of-type {
-			border-right: none;
+		.game-number {
+			display: grid;
+			justify-content: center;
+			padding: 0.5rem 0;
 		}
 
 		.field {

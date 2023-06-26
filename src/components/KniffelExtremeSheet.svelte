@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
+	import { goto } from '$app/navigation';
 	import board from '@assets/kniffel-extreme-board.json';
 	import { destroySession, type SessionStore } from '@stores/session.store';
-	import { goto } from '$app/navigation';
+	import { getContext } from 'svelte';
 	import KniffelExtremeGame from './KniffelExtremeGame.svelte';
 
 	const session = getContext<SessionStore>('session');
@@ -26,18 +26,10 @@
 {/if}
 
 <div id="sheet">
-	<!-- Game Header -->
-	<header>
-		<div class="player-name">Name: {$session.player?.name}</div>
-		<div class="game-numbers">
-			{#each $session?.games as game}
-				<div class="game-number">{game.number + 1}. Spiel</div>
-			{/each}
-		</div>
-	</header>
 	<!-- Game -->
 	<section class="sheet">
 		<aside class="sheet-info">
+			<div class="player-name">Name: {$session.player?.name}</div>
 			{#each board.upper as boardField}
 				<div class="field-info">
 					<div class="title">{boardField.title}</div>
@@ -94,38 +86,20 @@
 		overflow-x: scroll;
 		padding: 1rem;
 
-		header {
-			display: grid;
-			grid-template-columns: 11rem auto;
-			height: 2rem;
-
-			> * {
-				display: grid;
-				align-items: end;
-				padding: 0.25rem 0;
-			}
-
-			.player-name {
-				text-decoration: underline;
-			}
-
-			.game-numbers {
-				display: flex;
-				gap: 1px;
-
-				.game-number {
-					width: 4rem;
-					text-align: center;
-					font-size: 0.9rem;
-				}
-			}
-		}
-
 		section.sheet {
 			display: grid;
 			grid-template-columns: 11rem auto;
 
 			aside {
+				position: sticky;
+				left: -7rem;
+				background-color: var(--bg-color);
+				z-index: 99;
+
+				.player-name {
+					padding: 0.5rem 0;
+				}
+
 				.field-info {
 					display: grid;
 					grid-template-columns: 50% 50%;
@@ -149,6 +123,8 @@
 
 			.games {
 				display: flex;
+				position: sticky;
+				top: 0;
 			}
 		}
 	}
