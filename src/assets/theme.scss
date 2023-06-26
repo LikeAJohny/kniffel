@@ -109,6 +109,9 @@ form {
 
 	input,
 	select {
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
 		width: 100%;
 		padding: 1rem;
 		background-color: var(--secondary-color);
