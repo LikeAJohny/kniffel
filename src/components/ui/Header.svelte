@@ -155,6 +155,7 @@
 			inset: 4rem -1rem auto;
 			padding: 1.5rem;
 			background-color: var(--bg-color);
+			z-index: 999;
 		}
 
 		.primary-navigation.visible {
