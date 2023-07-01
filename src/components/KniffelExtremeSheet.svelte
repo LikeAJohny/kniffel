@@ -32,7 +32,17 @@
 			<div class="player-name">Name: {$session.player?.name}</div>
 			{#each board.upper as boardField}
 				<div class="field-info">
-					<div class="title">{boardField.title}</div>
+					{#if boardField.image}
+						<div class="image">
+							<i class="fa-solid fa-{boardField.image}" />
+							<i class="fa-solid fa-{boardField.image}" />
+							<i class="fa-solid fa-{boardField.image}" />
+						</div>
+					{:else}
+						<div class="title">
+							{boardField.title}
+						</div>
+					{/if}
 					<div class="rule">{boardField.rule}</div>
 				</div>
 			{/each}
@@ -51,7 +61,17 @@
 			<hr />
 			{#each board.lower as boardField}
 				<div class="field-info">
-					<div class="title">{boardField.title}</div>
+					{#if boardField.image}
+						<div class="image">
+							<i class="fa-solid fa-{boardField.image}" />
+							<i class="fa-solid fa-{boardField.image}" />
+							<i class="fa-solid fa-{boardField.image}" />
+						</div>
+					{:else}
+						<div class="title">
+							{boardField.title}
+						</div>
+					{/if}
 					<div class="rule">{boardField.rule}</div>
 				</div>
 			{/each}
@@ -109,7 +129,8 @@
 					font-size: 0.7rem;
 
 					.title,
-					.rule {
+					.rule,
+					.image {
 						display: grid;
 						justify-content: center;
 						align-items: center;
@@ -117,6 +138,12 @@
 						height: 100%;
 						padding: 0 0.5rem;
 						border: 1px solid var(--secondary-color);
+					}
+
+					.image {
+						display: flex;
+						gap: 0.25rem;
+						font-size: 1.25rem;
 					}
 				}
 			}

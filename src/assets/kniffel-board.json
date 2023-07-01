@@ -3,42 +3,42 @@
 		{
 			"name": "ones",
 			"title": "Einser",
-			"image": null,
+			"image": "dice-one",
 			"rule": "nur Einser zählen",
 			"type": "number"
 		},
 		{
 			"name": "twos",
 			"title": "Zweier",
-			"image": null,
+			"image": "dice-two",
 			"rule": "nur Zweier zählen",
 			"type": "number"
 		},
 		{
 			"name": "threes",
 			"title": "Dreier",
-			"image": null,
+			"image": "dice-three",
 			"rule": "nur Dreier zählen",
 			"type": "number"
 		},
 		{
 			"name": "fours",
 			"title": "Vierer",
-			"image": null,
+			"image": "dice-four",
 			"rule": "nur Vierer zählen",
 			"type": "number"
 		},
 		{
 			"name": "fives",
 			"title": "Fünfer",
-			"image": null,
+			"image": "dice-five",
 			"rule": "nur Fünfer zählen",
 			"type": "number"
 		},
 		{
 			"name": "sixes",
 			"title": "Sechser",
-			"image": null,
+			"image": "dice-six",
 			"rule": "nur Sechser zählen",
 			"type": "number"
 		}
