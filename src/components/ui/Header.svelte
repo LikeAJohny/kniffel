@@ -147,13 +147,14 @@
 			position: fixed;
 			inset: 0;
 			background-image: linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0 / 1));
+			z-index: 100;
 		}
 
 		.primary-navigation {
 			display: none !important;
-			position: fixed;
-			inset: 4rem -1rem auto;
-			padding: 1.5rem;
+			position: absolute;
+			inset: 4rem 0rem auto;
+			padding: 2rem 0.5rem;
 			background-color: var(--bg-color);
 			z-index: 999;
 		}
