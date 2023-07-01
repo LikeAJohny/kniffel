@@ -83,6 +83,7 @@
 			border: none;
 			background: none;
 			color: var(--font-color);
+			cursor: pointer;
 		}
 	}
 </style>
