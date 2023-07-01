@@ -12,8 +12,8 @@ export const persistSession = async (supabase: SupabaseClient, session: Session)
 
 	const games = session.games.map((game, i) => ({
 		...(session.variant?.name === 'Kniffel'
-			? mapKniffelGamesToDb(game, sessionData[i].id)
-			: mapKniffelExtremeGamesToDb(game, sessionData[i].id))
+			? mapKniffelGamesToDb(game, sessionData[0].id)
+			: mapKniffelExtremeGamesToDb(game, sessionData[0].id))
 	}));
 
 	const { error: gamesError } = await supabase
