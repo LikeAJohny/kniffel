@@ -23,6 +23,7 @@
 		type="number"
 		name="value"
 		id="value"
+		inputmode="none"
 		bind:value
 		on:focusin={() => (choiceOpen = true)}
 		on:focusout={() => setTimeout(() => (choiceOpen = false), 10)}
