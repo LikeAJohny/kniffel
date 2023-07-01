@@ -52,6 +52,7 @@
 			gap: 2px;
 			background-color: var(--secondary-color);
 			border-radius: 3px;
+			z-index: 99;
 
 			&.open {
 				display: grid;
