@@ -3,7 +3,7 @@
 </script>
 
 <div class="field">
-	<input type="number" name="value" id="value" bind:value />
+	<input type="number" inputmode="numeric" name="value" id="value" bind:value />
 </div>
 
 <style lang="scss">
