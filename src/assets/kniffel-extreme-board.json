@@ -3,42 +3,42 @@
 		{
 			"name": "ones",
 			"title": "Einser",
-			"image": "dice-one",
+			"image": "fa-solid fa-dice-one",
 			"rule": "nur Einser zählen",
 			"type": "number"
 		},
 		{
 			"name": "twos",
 			"title": "Zweier",
-			"image": "dice-two",
+			"image": "fa-solid fa-dice-two",
 			"rule": "nur Zweier zählen",
 			"type": "number"
 		},
 		{
 			"name": "threes",
 			"title": "Dreier",
-			"image": "dice-three",
+			"image": "fa-solid fa-dice-three",
 			"rule": "nur Dreier zählen",
 			"type": "number"
 		},
 		{
 			"name": "fours",
 			"title": "Vierer",
-			"image": "dice-four",
+			"image": "fa-solid fa-dice-four",
 			"rule": "nur Vierer zählen",
 			"type": "number"
 		},
 		{
 			"name": "fives",
 			"title": "Fünfer",
-			"image": "dice-five",
+			"image": "fa-solid fa-dice-five",
 			"rule": "nur Fünfer zählen",
 			"type": "number"
 		},
 		{
 			"name": "sixes",
 			"title": "Sechser",
-			"image": "dice-six",
+			"image": "fa-solid fa-dice-six",
 			"rule": "nur Sechser zählen",
 			"type": "number"
 		}
@@ -47,28 +47,28 @@
 		{
 			"name": "threeOfAKind",
 			"title": "Dreierpasch",
-			"image": null,
+			"image": "fa-solid fa-3",
 			"rule": "alle Augen zählen",
 			"type": "number"
 		},
 		{
 			"name": "fourOfAKind",
 			"title": "Viererpasch",
-			"image": null,
+			"image": "fa-solid fa-4",
 			"rule": "alle augen Zählen",
 			"type": "number"
 		},
 		{
 			"name": "twoPairs",
 			"title": "Zwei Paare",
-			"image": null,
+			"image": "fa-solid fa-cube",
 			"rule": "alle Augen zählen",
 			"type": "number"
 		},
 		{
 			"name": "threePairs",
 			"title": "Drei Paare",
-			"image": null,
+			"image": "fa-solid fa-cubes",
 			"rule": "35 Punkte",
 			"type": "bool",
 			"score": 35
@@ -76,7 +76,7 @@
 		{
 			"name": "twoThrees",
 			"title": "Zwei Dreier",
-			"image": null,
+			"image": "fa-solid fa-circle-half-stroke",
 			"rule": "45 Punkte",
 			"type": "bool",
 			"score": 45
@@ -84,7 +84,7 @@
 		{
 			"name": "fullHouse",
 			"title": "Full House",
-			"image": null,
+			"image": "fa-solid fa-house-user",
 			"rule": "25 Punkte",
 			"type": "bool",
 			"score": 25
@@ -92,7 +92,7 @@
 		{
 			"name": "largeFullHouse",
 			"title": "Großes Full House",
-			"image": null,
+			"image": "fa-solid fa-people-roof",
 			"rule": "45 Punkte",
 			"type": "bool",
 			"score": 45
@@ -100,7 +100,7 @@
 		{
 			"name": "smallStraight",
 			"title": "Kleine Straße",
-			"image": null,
+			"image": "fa-solid fa-road",
 			"rule": "30 Punkte",
 			"type": "bool",
 			"score": 30
@@ -108,7 +108,7 @@
 		{
 			"name": "largeStraight",
 			"title": "Große Straße",
-			"image": null,
+			"image": "fa-solid fa-road",
 			"rule": "40 Punkte",
 			"type": "bool",
 			"score": 40
@@ -116,7 +116,7 @@
 		{
 			"name": "highway",
 			"title": "Highway",
-			"image": null,
+			"image": "fa-solid fa-road",
 			"rule": "50 Punkte",
 			"type": "bool",
 			"score": 50
@@ -124,7 +124,7 @@
 		{
 			"name": "yahtzee",
 			"title": "Kniffel",
-			"image": null,
+			"image": "fa-solid fa-5",
 			"rule": "50 Punkte",
 			"type": "bool",
 			"score": 50
@@ -132,7 +132,7 @@
 		{
 			"name": "yahtzeeExtreme",
 			"title": "Kniffel Extreme",
-			"image": null,
+			"image": "fa-solid fa-6",
 			"rule": "75 Punkte",
 			"type": "bool",
 			"score": 75
@@ -140,7 +140,7 @@
 		{
 			"name": "tenOrLess",
 			"title": "10 oder weniger",
-			"image": null,
+			"image": "fa-solid fa-less-than-equal",
 			"rule": "40 Punkte",
 			"type": "bool",
 			"score": 40
@@ -148,7 +148,7 @@
 		{
 			"name": "thirtyThreeOrMore",
 			"title": "33 oder mehr",
-			"image": null,
+			"image": "fa-solid fa-greater-than-equal",
 			"rule": "40 Punkte",
 			"type": "bool",
 			"score": 40
@@ -156,14 +156,14 @@
 		{
 			"name": "chance",
 			"title": "Chance",
-			"image": null,
+			"image": "fa-solid fa-dice-d6",
 			"rule": "alle Augen zählen",
 			"type": "number"
 		},
 		{
 			"name": "superChance",
 			"title": "Super Chance",
-			"image": null,
+			"image": "fa-solid fa-dice-d20",
 			"rule": "alle Augen zählen x2",
 			"type": "number"
 		}
