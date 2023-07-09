@@ -19,7 +19,7 @@
 	});
 </script>
 
-{#if variant.name === 'Kniffel'}
+{#if $session.variant?.name === 'Kniffel'}
 	<KniffelSheet />
 {:else}
 	<KniffelExtremeSheet />
