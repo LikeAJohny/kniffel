@@ -65,7 +65,6 @@
 		.sessions {
 			padding: 1rem 0;
 			display: grid;
-			grid-template-columns: repeat(3, 1fr);
 			gap: 1rem;
 
 			.session {
