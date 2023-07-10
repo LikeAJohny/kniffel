@@ -34,6 +34,8 @@ export type KniffelGame = {
 	};
 };
 
+export type NewKniffelGame = Omit<KniffelGame, 'id'>;
+
 export type KniffelExtremeGame = {
 	id: string | null;
 	number: number;
@@ -79,6 +81,8 @@ export type KniffelExtremeGame = {
 	};
 };
 
+export type NewKniffelExtremeGame = Omit<KniffelExtremeGame, 'id'>;
+
 export type Session = {
 	id: string | null;
 	player: Player | null;
@@ -91,6 +95,8 @@ export type Session = {
 	duration: number | null;
 };
 
+export type NewSession = Omit<Session, 'id'>;
+
 export type Player = {
 	id: string;
 	name: string;
@@ -99,4 +105,10 @@ export type Player = {
 export type Variant = {
 	id: string;
 	name: string;
+};
+
+export const isGameExtreme = (
+	game: KniffelGame | KniffelExtremeGame
+): game is KniffelExtremeGame => {
+	return 'yahtzeeExtreme' in game;
 };

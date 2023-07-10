@@ -1,5 +1,10 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { KniffelExtremeGame, KniffelGame, Session } from '@/types/kniffel';
+import {
+	isGameExtreme,
+	type KniffelExtremeGame,
+	type KniffelGame,
+	type Session
+} from '@/types/kniffel';
 
 export const persistSession = async (supabase: SupabaseClient, session: Session) => {
 	const { data: sessionData, error: sessionError } = await supabase
@@ -10,10 +15,10 @@ export const persistSession = async (supabase: SupabaseClient, session: Session)
 	if (sessionError) console.error(sessionError.message);
 	if (!sessionData) return;
 
-	const games = session.games.map((game, i) => ({
-		...(session.variant?.name === 'Kniffel'
-			? mapKniffelGamesToDb(game, sessionData[0].id)
-			: mapKniffelExtremeGamesToDb(game, sessionData[0].id))
+	const games = session.games.map((game) => ({
+		...(isGameExtreme(game)
+			? mapKniffelExtremeGamesToDb(game, sessionData[0].id)
+			: mapKniffelGamesToDb(game, sessionData[0].id))
 	}));
 
 	const { error: gamesError } = await supabase
