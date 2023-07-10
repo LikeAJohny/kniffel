@@ -4,6 +4,7 @@
 	import { createGame } from '@stores/kniffel.store';
 	import NumberField from './NumberField.svelte';
 	import BoolField from './BoolField.svelte';
+	import type { KniffelGame } from '@/types/kniffel';
 
 	export let number: number;
 
@@ -13,6 +14,14 @@
 	game.subscribe((gameState) => {
 		dispatch('gameUpdate', gameState);
 	});
+
+	function upperFieldName(fieldName: string) {
+		return fieldName as keyof KniffelGame['scores']['upper'];
+	}
+
+	function lowerFieldName(fieldName: string) {
+		return fieldName as keyof KniffelGame['scores']['lower'];
+	}
 </script>
 
 <div class="game">
@@ -20,7 +29,7 @@
 	{#each board.upper as field}
 		{#if field.type === 'number'}
 			<NumberField
-				bind:value={$scores.upper[field.name]}
+				bind:value={$scores.upper[upperFieldName(field.name)]}
 				name={`game-${$game.number}_${field.name}`}
 			/>
 		{/if}
@@ -33,13 +42,13 @@
 	{#each board.lower as field}
 		{#if field.type === 'number'}
 			<NumberField
-				bind:value={$scores.lower[field.name]}
+				bind:value={$scores.lower[lowerFieldName(field.name)]}
 				name={`game-${$game.number}_${field.name}`}
 			/>
 		{/if}
 		{#if field.type === 'bool'}
 			<BoolField
-				bind:value={$scores.lower[field.name]}
+				bind:value={$scores.lower[lowerFieldName(field.name)]}
 				score={field.score}
 				name={`game-${$game.number}_${field.name}`}
 			/>
