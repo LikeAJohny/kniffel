@@ -19,7 +19,10 @@
 	<!-- Upper -->
 	{#each board.upper as field}
 		{#if field.type === 'number'}
-			<NumberField bind:value={$scores.upper[field.name]} name={field.name} />
+			<NumberField
+				bind:value={$scores.upper[field.name]}
+				name={`game-${$game.number}_${field.name}`}
+			/>
 		{/if}
 	{/each}
 	<div class="field">{$results.upper.sum}</div>
@@ -29,10 +32,17 @@
 	<!-- Lower -->
 	{#each board.lower as field}
 		{#if field.type === 'number'}
-			<NumberField bind:value={$scores.lower[field.name]} name={field.name} />
+			<NumberField
+				bind:value={$scores.lower[field.name]}
+				name={`game-${$game.number}_${field.name}`}
+			/>
 		{/if}
 		{#if field.type === 'bool'}
-			<BoolField bind:value={$scores.lower[field.name]} score={field.score} name={field.name} />
+			<BoolField
+				bind:value={$scores.lower[field.name]}
+				score={field.score}
+				name={`game-${$game.number}_${field.name}`}
+			/>
 		{/if}
 	{/each}
 	<div class="field">{$results.lower.total}</div>
