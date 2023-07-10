@@ -1,4 +1,5 @@
 <script lang="ts">
+	export let name: string;
 	export let score: number = 0;
 	export let value: number | null = null;
 	let choiceOpen: boolean = false;
@@ -21,8 +22,8 @@
 	</div>
 	<input
 		type="number"
-		name="value"
-		id="value"
+		{name}
+		id={name}
 		inputmode="none"
 		bind:value
 		on:focusin={() => (choiceOpen = true)}

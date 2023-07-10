@@ -1,9 +1,10 @@
 <script lang="ts">
+	export let name: string;
 	export let value: number | null;
 </script>
 
 <div class="field">
-	<input type="number" inputmode="numeric" name="value" id="value" bind:value />
+	<input type="number" inputmode="numeric" {name} id={name} bind:value />
 </div>
 
 <style lang="scss">
