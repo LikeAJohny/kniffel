@@ -3,7 +3,7 @@ export type Json =
   | number
   | boolean
   | null
-  | { [key: string]: Json }
+  | { [key: string]: Json | undefined }
   | Json[]
 
 export interface Database {
@@ -124,6 +124,18 @@ export interface Database {
             columns: ["session_id"]
             referencedRelation: "sessions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "kniffel_extreme_games_session_id_fkey"
+            columns: ["session_id"]
+            referencedRelation: "kniffel_extreme_sessions_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "kniffel_extreme_games_session_id_fkey"
+            columns: ["session_id"]
+            referencedRelation: "kniffel_sessions_view"
+            referencedColumns: ["id"]
           }
         ]
       }
@@ -200,6 +212,18 @@ export interface Database {
             columns: ["session_id"]
             referencedRelation: "sessions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "kniffel_games_session_id_fkey"
+            columns: ["session_id"]
+            referencedRelation: "kniffel_extreme_sessions_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "kniffel_games_session_id_fkey"
+            columns: ["session_id"]
+            referencedRelation: "kniffel_sessions_view"
+            referencedColumns: ["id"]
           }
         ]
       }
@@ -270,7 +294,58 @@ export interface Database {
       }
     }
     Views: {
-      [_ in never]: never
+      kniffel_extreme_sessions_view: {
+        Row: {
+          finished_at: string | null
+          id: string | null
+          name: string | null
+          player_id: string | null
+          score: number | null
+          started_at: string | null
+          status: string | null
+          variant_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sessions_player_id_fkey"
+            columns: ["player_id"]
+            referencedRelation: "players"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sessions_variant_id_fkey"
+            columns: ["variant_id"]
+            referencedRelation: "game_variants"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      kniffel_sessions_view: {
+        Row: {
+          finished_at: string | null
+          id: string | null
+          name: string | null
+          player_id: string | null
+          score: number | null
+          started_at: string | null
+          status: string | null
+          variant_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sessions_player_id_fkey"
+            columns: ["player_id"]
+            referencedRelation: "players"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sessions_variant_id_fkey"
+            columns: ["variant_id"]
+            referencedRelation: "game_variants"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Functions: {
       [_ in never]: never
