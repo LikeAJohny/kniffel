@@ -1,11 +1,8 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
-	import board from '@assets/kniffel-board.json';
-	import { destroySession, type SessionStore } from '@stores/session.store';
 	import { goto } from '$app/navigation';
+	import board from '@assets/kniffel-board.json';
+	import { session } from '@stores/session.store';
 	import KniffelGame from './KniffelGame.svelte';
-
-	const session = getContext<SessionStore>('session');
 
 	function handleSave() {
 		fetch('/api/sessions', {
@@ -15,7 +12,7 @@
 				'content-type': 'application/json'
 			}
 		}).then(() => {
-			destroySession();
+			session.destroy();
 			goto('/');
 		});
 	}

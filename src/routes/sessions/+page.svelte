@@ -3,6 +3,8 @@
 
 	let { kniffelSessions, kniffelExtremeSessions } = data;
 	$: ({ kniffelSessions, kniffelExtremeSessions } = data);
+
+	console.log(kniffelSessions, kniffelExtremeSessions);
 </script>
 
 <section id="sessions">
@@ -14,9 +16,7 @@
 					<div class="session">
 						<header class="session-header">
 							{kniffelSession?.name}
-							{#if kniffelSession.finished_at}
-								- {new Date(kniffelSession.finished_at).toLocaleDateString()}
-							{/if}
+							- {new Date(kniffelSession.started_at).toLocaleDateString()}
 						</header>
 						<details>
 							<summary>
@@ -35,15 +35,19 @@
 					<div class="session">
 						<header class="session-header">
 							{kniffelExtremeSession?.name}
-							{#if kniffelExtremeSessions.finished_at}
-								- {new Date(kniffelExtremeSession.finished_at).toLocaleDateString()}
-							{/if}
+							- {kniffelExtremeSession.score}
+							- {new Date(kniffelExtremeSession.started_at).toLocaleDateString()}
 						</header>
 						<details>
-							<summary>
-								Score: {kniffelExtremeSession.score}
-							</summary>
-							Detailed Scores TBA
+							<summary>Details</summary>
+							<div class="details">
+								Played <br />
+								{new Date(kniffelExtremeSession.started_at).toLocaleDateString()}
+								{new Date(kniffelExtremeSession.started_at).toLocaleTimeString()}
+								-
+								{new Date(kniffelExtremeSession.finished_at).toLocaleDateString()}
+								{new Date(kniffelExtremeSession.finished_at).toLocaleTimeString()}
+							</div>
 						</details>
 					</div>
 				{/each}
@@ -76,6 +80,15 @@
 				.session-header {
 					font-size: 1.25rem;
 					border-bottom: 1px solid var(--primary-color);
+				}
+
+				details {
+					summary {
+						cursor: pointer;
+					}
+					.details {
+						padding: 0.5rem 0.75rem;
+					}
 				}
 			}
 		}

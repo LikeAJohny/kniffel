@@ -95,42 +95,19 @@ const initialSession: Session = {
 };
 
 export type SessionStore = Writable<Session> & {
+	start: (player: Player, variant: Variant, numberOfGames: number) => void;
 	updateGame: (game: KniffelGame) => void;
+	destroy: () => void;
 };
 
-export const createSession = (
-	player: Player,
-	variant: Variant,
-	numberOfGames: number
-): SessionStore => {
-	let initial = initialSession;
+const createSession = (): SessionStore => {
 	const storedSession = localStorage.getItem('session');
 
-	if (storedSession) {
-		initial = JSON.parse(storedSession);
-	}
+	const { subscribe, set, update } = writable(
+		storedSession ? JSON.parse(storedSession) : initialSession
+	);
 
-	const { subscribe, set, update } = writable(initial);
-
-	if (!storedSession) {
-		update((sessionState) => ({
-			...sessionState,
-			player,
-			variant,
-			games: Array(numberOfGames)
-				.fill(
-					variant.name === 'Kniffel'
-						? structuredClone(initialKniffel)
-						: structuredClone(initialKniffelExtreme)
-				)
-				.map((game, index) => ({
-					...game,
-					number: index
-				}))
-		}));
-	}
-
-	subscribe((sessionState) => {
+	subscribe((sessionState: Session) => {
 		const status = sessionState.games.every((game) => game.status === 'finished')
 			? 'finished'
 			: 'running';
@@ -146,8 +123,28 @@ export const createSession = (
 		localStorage.setItem('session', JSON.stringify(sessionState));
 	});
 
+	const start = (player: Player, variant: Variant, numberOfGames: number) => {
+		update((sessionState) => ({
+			...sessionState,
+			player,
+			variant,
+			games: Array(numberOfGames)
+				.fill(
+					variant.name === 'Kniffel'
+						? structuredClone(initialKniffel)
+						: structuredClone(initialKniffelExtreme)
+				)
+				.map((game, index) => ({
+					...game,
+					number: index
+				}))
+		}));
+	};
+
+	const destroy = () => localStorage.removeItem('session');
+
 	const updateGame = (game: KniffelGame) => {
-		update((sessionState) => {
+		update((sessionState: Session) => {
 			const games = sessionState.games.map((sg) => (game.number === sg.number ? game : sg));
 			const score = games.reduce((sum, game) => sum + (game.results.total || 0), 0);
 
@@ -155,7 +152,7 @@ export const createSession = (
 		});
 	};
 
-	return { subscribe, set, update, updateGame };
+	return { subscribe, set, update, start, updateGame, destroy };
 };
 
-export const destroySession = () => localStorage.removeItem('session');
+export const session = createSession();

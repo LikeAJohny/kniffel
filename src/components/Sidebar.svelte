@@ -1,11 +1,9 @@
 <script lang="ts">
-	import board from '@assets/kniffel-extreme-board.json';
-	import type { SessionStore } from '@stores/session.store';
-	import { getContext } from 'svelte';
-	import { settings } from '@stores/settings.store';
 	import { SideBarMode } from '@/types/settings';
+	import board from '@assets/kniffel-extreme-board.json';
+	import { session } from '@stores/session.store';
+	import { settings } from '@stores/settings.store';
 
-	const session = getContext<SessionStore>('session');
 	const sideBarWidth = $settings.sideBarMode === SideBarMode.FULL ? '11rem' : '3rem';
 	const sideBarCols = $settings.sideBarMode === SideBarMode.FULL ? 2 : 1;
 </script>

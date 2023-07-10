@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { destroySession } from '@stores/session.store';
 	import type { Variant } from '@/types/kniffel';
+	import { session } from '@stores/session.store';
 
 	export let data;
 	let { player, variants } = data;
@@ -12,15 +12,9 @@
 
 	function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
-		destroySession();
-
-		const queryParams = new URLSearchParams({
-			player: JSON.stringify(player),
-			variant: JSON.stringify(variant),
-			'number-of-games': numberOfGames + ''
-		}).toString();
-
-		goto(`/play?${queryParams}`);
+		session.destroy();
+		session.start(player, variant, numberOfGames);
+		goto('/play');
 	}
 </script>
 

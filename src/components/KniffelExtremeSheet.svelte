@@ -1,11 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { destroySession, type SessionStore } from '@stores/session.store';
-	import { getContext } from 'svelte';
+	import { session } from '@stores/session.store';
 	import KniffelExtremeGame from './KniffelExtremeGame.svelte';
 	import Sidebar from './Sidebar.svelte';
-
-	const session = getContext<SessionStore>('session');
 
 	function handleSave() {
 		fetch('/api/sessions', {
@@ -15,7 +12,7 @@
 				'content-type': 'application/json'
 			}
 		}).then(() => {
-			destroySession();
+			session.destroy();
 			goto('/');
 		});
 	}
