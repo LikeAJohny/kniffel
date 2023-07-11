@@ -12,6 +12,12 @@
 
 	function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
+
+		if (variant === '' || numberOfGames === '') {
+			alert('Please fill in all the fields');
+			return;
+		}
+
 		session.destroy();
 		session.start(player, variant, numberOfGames);
 		goto('/play');
