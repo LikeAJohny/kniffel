@@ -11,9 +11,7 @@
 	const { scores, results, game } = createGame(number);
 	const dispatch = createEventDispatcher();
 
-	game.subscribe((gameState) => {
-		dispatch('gameUpdate', gameState);
-	});
+	game.subscribe(($game) => dispatch('gameUpdate', $game));
 
 	function upperFieldName(fieldName: string) {
 		return fieldName as keyof KniffelGame['scores']['upper'];

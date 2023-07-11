@@ -107,25 +107,25 @@ const createSession = (): SessionStore => {
 		storedSession ? JSON.parse(storedSession) : initialSession
 	);
 
-	subscribe((sessionState: Session) => {
-		const status = sessionState.games.every((game) => game.status === 'finished')
+	subscribe(($session: Session) => {
+		const status = $session.games.every((game) => game.status === 'finished')
 			? 'finished'
 			: 'running';
 
-		if (sessionState.status !== status) {
-			update((sessionState) => ({
-				...sessionState,
+		if ($session.status !== status) {
+			update(($session) => ({
+				...$session,
 				status,
 				finishedAt: status === 'finished' ? new Date() : null
 			}));
 		}
 
-		localStorage.setItem('session', JSON.stringify(sessionState));
+		localStorage.setItem('session', JSON.stringify($session));
 	});
 
 	const start = (player: Player, variant: Variant, numberOfGames: number) => {
-		update((sessionState) => ({
-			...sessionState,
+		update(($session) => ({
+			...$session,
 			player,
 			variant,
 			games: Array(numberOfGames)
@@ -144,11 +144,11 @@ const createSession = (): SessionStore => {
 	const destroy = () => localStorage.removeItem('session');
 
 	const updateGame = (game: KniffelGame) => {
-		update((sessionState: Session) => {
-			const games = sessionState.games.map((sg) => (game.number === sg.number ? game : sg));
+		update(($session: Session) => {
+			const games = $session.games.map((sg) => (game.number === sg.number ? game : sg));
 			const score = games.reduce((sum, game) => sum + (game.results.total || 0), 0);
 
-			return { ...sessionState, games, score };
+			return { ...$session, games, score };
 		});
 	};
 
