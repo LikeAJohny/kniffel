@@ -1,110 +1,15 @@
-import { writable, type Writable } from 'svelte/store';
-import type { KniffelExtremeGame, KniffelGame, Player, Session, Variant } from '@/types/kniffel';
-
-const initialKniffel: KniffelGame = {
-	id: null,
-	number: 0,
-	status: 'running',
-	scores: {
-		upper: {
-			ones: null,
-			twos: null,
-			threes: null,
-			fours: null,
-			fives: null,
-			sixes: null
-		},
-		lower: {
-			threeOfAKind: null,
-			fourOfAKind: null,
-			fullHouse: null,
-			smallStraight: null,
-			largeStraight: null,
-			yahtzee: null,
-			chance: null
-		}
-	},
-	results: {
-		upper: {
-			sum: 0,
-			bonus: 0,
-			total: 0
-		},
-		lower: {
-			total: 0
-		},
-		total: 0
-	}
-};
-
-const initialKniffelExtreme: KniffelExtremeGame = {
-	id: null,
-	number: 0,
-	status: 'running',
-	scores: {
-		upper: {
-			ones: null,
-			twos: null,
-			threes: null,
-			fours: null,
-			fives: null,
-			sixes: null
-		},
-		lower: {
-			threeOfAKind: null,
-			fourOfAKind: null,
-			twoPairs: null,
-			threePairs: null,
-			twoThrees: null,
-			fullHouse: null,
-			largeFullHouse: null,
-			smallStraight: null,
-			largeStraight: null,
-			highway: null,
-			yahtzee: null,
-			yahtzeeExtreme: null,
-			tenOrLess: null,
-			thirtyThreeOrMore: null,
-			chance: null,
-			superChance: null
-		}
-	},
-	results: {
-		upper: {
-			sum: 0,
-			bonus: 0,
-			total: 0
-		},
-		lower: {
-			total: 0
-		},
-		total: 0
-	}
-};
-
-const initialSession: Session = {
-	id: null,
-	player: null,
-	variant: null,
-	games: [],
-	score: 0,
-	status: 'running',
-	startedAt: new Date(),
-	finishedAt: null,
-	duration: null
-};
-
-export type SessionStore = Writable<Session> & {
-	start: (player: Player, variant: Variant, numberOfGames: number) => void;
-	updateGame: (game: KniffelGame) => void;
-	destroy: () => void;
-};
+import type { KniffelGame, Player, Session, Variant } from '@/types/kniffel';
+import type { SessionStore } from '@/types/stores';
+import { kniffelExtremeGame } from '@models/kniffel-extreme-game';
+import { kniffelGame } from '@models/kniffel-game';
+import { session as sessionModel } from '@models/session';
+import { writable } from 'svelte/store';
 
 const createSession = (): SessionStore => {
 	const storedSession = localStorage.getItem('session');
 
 	const { subscribe, set, update } = writable(
-		storedSession ? JSON.parse(storedSession) : initialSession
+		storedSession ? JSON.parse(storedSession) : sessionModel
 	);
 
 	subscribe(($session: Session) => {
@@ -131,8 +36,8 @@ const createSession = (): SessionStore => {
 			games: Array(numberOfGames)
 				.fill(
 					variant.name === 'Kniffel'
-						? structuredClone(initialKniffel)
-						: structuredClone(initialKniffelExtreme)
+						? structuredClone(kniffelGame)
+						: structuredClone(kniffelExtremeGame)
 				)
 				.map((game, index) => ({
 					...game,

@@ -13,6 +13,7 @@
 			"@assets/*": ["./src/assets/*"],
 			"@components/*": ["./src/components/*"],
   		"@lib/*":["./src/lib/*"],
+  		"@models/*":["./src/models/*"],
   		"@routes/*":["./src/routes/*"],
   		"@stores/*":["./src/stores/*"],
   		"@/types/*":["./src/types/*"],
