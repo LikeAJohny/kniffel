@@ -7,7 +7,7 @@
 	export let variants: Variant[];
 
 	let variant: Variant = variants[0];
-	let numberOfGames: number = 1;
+	let numberOfGames = 1;
 
 	function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();

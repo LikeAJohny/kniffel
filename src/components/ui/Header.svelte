@@ -4,7 +4,7 @@
 	import iconOpen from '@assets/icon-hamburger.svg';
 	import ThemeSwitcher from './ThemeSwitcher.svelte';
 
-	let navOpen: boolean = false;
+	let navOpen = false;
 
 	function clickNavigation() {
 		setTimeout(() => (navOpen = !navOpen), 100);
@@ -153,7 +153,7 @@
 		.primary-navigation {
 			display: none !important;
 			position: absolute;
-			inset: 4rem 0rem auto;
+			inset: 4rem 0 auto;
 			padding: 2rem 0.5rem;
 			background-color: var(--bg-color);
 			z-index: 999;

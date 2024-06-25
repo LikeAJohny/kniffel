@@ -1,8 +1,8 @@
 <script lang="ts">
 	export let name: string;
-	export let score: number = 0;
+	export let score = 0;
 	export let value: number | null = null;
-	let choiceOpen: boolean = false;
+	let choiceOpen = false;
 
 	function strike() {
 		value = 0;
