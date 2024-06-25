@@ -27,7 +27,7 @@
 		inputmode="none"
 		bind:value
 		on:focusin={() => (choiceOpen = true)}
-		on:focusout={() => setTimeout(() => (choiceOpen = false), 10)}
+		on:focusout={() => setTimeout(() => (choiceOpen = false), 100)}
 	/>
 </div>
 
