@@ -6,7 +6,7 @@ export async function load({ locals: { supabase } }) {
 	const { data: player } = await supabase.from('players').select().eq('id', user.data.user?.id);
 	const { data: variants } = await supabase.from('game_variants').select();
 
-	if (!player) throw redirect(303, '/');
+	if (!player) redirect(303, '/');
 
 	return {
 		player: player[0] as Player,

@@ -20,7 +20,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const session = await event.locals.getSession();
 
 	if (!session && !(event.url.pathname === '/login' || event.url.pathname === '/signup')) {
-		throw redirect(303, '/login');
+		redirect(303, '/login');
 	}
 
 	return resolve(event, {
