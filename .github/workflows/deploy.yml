@@ -8,6 +8,9 @@ on:
         required: true
         default: 'latest'
 
+env:
+  REGISTRY: ghcr.io
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -28,10 +31,14 @@ jobs:
               docker rm kniffel
             fi
           
+            docker login -u ${{ github.actor }} -p ${{ secrets.GHCR_PAT }} ${{ env.REGISTRY }}
+          
             docker pull ghcr.io/likeajohny/kniffel:${{ github.event.inputs.image-tag }}
           
             docker run -d --name kniffel -p 3000:3000 \
               -e PUBLIC_SUPABASE_URL=${{ secrets.PUBLIC_SUPABASE_URL }} \
               -e PUBLIC_SUPABASE_ANON_KEY=${{ secrets.PUBLIC_SUPABASE_ANON_KEY }} \
               ghcr.io/likeajohny/kniffel:${{ github.event.inputs.image-tag }}
+          
+            docker logout ${{ env.REGISTRY }}
           EOF
