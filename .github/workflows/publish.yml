@@ -30,7 +30,7 @@ jobs:
           docker build . \
             --build-arg PUBLIC_SUPABASE_URL=${{ secrets.PUBLIC_SUPABASE_URL }} \
             --build-arg PUBLIC_SUPABASE_ANON_KEY=${{ secrets.PUBLIC_SUPABASE_ANON_KEY }} \
-            --build-arg ORIGIN=${{ PRODUCTION_DOMAIN }} \
+            --build-arg ORIGIN=${{ secrets.PRODUCTION_DOMAIN }} \
             -t ${{ env.REGISTRY }}/likeajohny/kniffel:${{ needs.tag-image.outputs.image-tag }}
           docker push ${{ env.IMAGE_NAME }}
           
