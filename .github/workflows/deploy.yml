@@ -1,0 +1,36 @@
+name: Deploy to Server
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs:
+      - tag-image
+      - publish
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy application
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+            if [ "$(docker ps -q -f name=kniffel)" ]; then
+              docker stop kniffel
+              docker rm kniffel
+            fi
+          
+            docker pull ghcr.io/likeajohny/kniffel:${{ needs.tag-image.outputs.image-tag }}
+          
+            docker run -d --name kniffel -p 3000:3000 \
+              -e PUBLIC_SUPABASE_URL=${{ secrets.PUBLIC_SUPABASE_URL }} \
+              -e PUBLIC_SUPABASE_ANON_KEY=${{ secrets.PUBLIC_SUPABASE_ANON_KEY }} \
+              ghcr.io/likeajohny/kniffel:${{ needs.tag-image.outputs.image-tag }}
+          EOF
