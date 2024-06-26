@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@supabase/auth-helpers-sveltekit':
-    specifier: ^0.10.7
-    version: 0.10.7(@supabase/supabase-js@2.44.0)(@sveltejs/kit@2.5.17)
+    specifier: ^0.13.0
+    version: 0.13.0(@supabase/supabase-js@2.44.0)(@sveltejs/kit@2.5.17)
   '@supabase/supabase-js':
     specifier: ^2.44.0
     version: 2.44.0
@@ -602,22 +602,22 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@supabase/auth-helpers-shared@0.6.3(@supabase/supabase-js@2.44.0):
-    resolution: {integrity: sha512-xYQRLFeFkL4ZfwC7p9VKcarshj3FB2QJMgJPydvOY7J5czJe6xSG5/wM1z63RmAzGbCkKg+dzpq61oeSyWiGBQ==}
+  /@supabase/auth-helpers-shared@0.7.0(@supabase/supabase-js@2.44.0):
+    resolution: {integrity: sha512-FBFf2ei2R7QC+B/5wWkthMha8Ca2bWHAndN+syfuEUUfufv4mLcAgBCcgNg5nJR8L0gZfyuaxgubtOc9aW3Cpg==}
     peerDependencies:
-      '@supabase/supabase-js': ^2.19.0
+      '@supabase/supabase-js': ^2.39.8
     dependencies:
       '@supabase/supabase-js': 2.44.0
       jose: 4.15.7
     dev: false
 
-  /@supabase/auth-helpers-sveltekit@0.10.7(@supabase/supabase-js@2.44.0)(@sveltejs/kit@2.5.17):
-    resolution: {integrity: sha512-fXdpdpIbyxqBerGhIoxrGkPvHDIfZ/HC6USzgpN8J9EYPxBm0GVj5jGYzKKtdEPW6MNi/xNHcciPIlcfEPCowA==}
+  /@supabase/auth-helpers-sveltekit@0.13.0(@supabase/supabase-js@2.44.0)(@sveltejs/kit@2.5.17):
+    resolution: {integrity: sha512-nNZUJv49e0RpEaRBWAEqzPQkeTfWiN6XhVxBJJWGkS9BIk47H+dDRJvvDd1lCT+u6xKXkgnp2VHosT5UK2UOcg==}
     peerDependencies:
-      '@supabase/supabase-js': ^2.19.0
-      '@sveltejs/kit': ^1.15.4
+      '@supabase/supabase-js': ^2.39.8
+      '@sveltejs/kit': ^1.30.3 || ^2.0.0
     dependencies:
-      '@supabase/auth-helpers-shared': 0.6.3(@supabase/supabase-js@2.44.0)
+      '@supabase/auth-helpers-shared': 0.7.0(@supabase/supabase-js@2.44.0)
       '@supabase/supabase-js': 2.44.0
       '@sveltejs/kit': 2.5.17(@sveltejs/vite-plugin-svelte@3.1.1)(svelte@4.2.18)(vite@5.3.1)
     dev: false
