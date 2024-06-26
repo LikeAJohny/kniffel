@@ -26,7 +26,7 @@ jobs:
       - name: Deploy application
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p ${{ secrets.SSH_PORT }} << 'EOF'
-            if [ "$(docker ps -q -f name=kniffel)" ]; then
+            if [ "$(docker ps -aq -f name=kniffel)" ]; then
               docker stop kniffel
               docker rm kniffel
             fi
