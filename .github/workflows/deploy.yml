@@ -2,6 +2,11 @@ name: Deploy to Server
 
 on:
   workflow_dispatch:
+    inputs:
+      image-tag:
+        description: 'Tag of the image to deploy'
+        required: true
+        default: 'latest'
 
 jobs:
   deploy:
@@ -27,10 +32,10 @@ jobs:
               docker rm kniffel
             fi
           
-            docker pull ghcr.io/likeajohny/kniffel:${{ needs.tag-image.outputs.image-tag }}
+            docker pull ghcr.io/likeajohny/kniffel:${{ github.event.inputs.image-tag }}
           
             docker run -d --name kniffel -p 3000:3000 \
               -e PUBLIC_SUPABASE_URL=${{ secrets.PUBLIC_SUPABASE_URL }} \
               -e PUBLIC_SUPABASE_ANON_KEY=${{ secrets.PUBLIC_SUPABASE_ANON_KEY }} \
-              ghcr.io/likeajohny/kniffel:${{ needs.tag-image.outputs.image-tag }}
+              ghcr.io/likeajohny/kniffel:${{ github.event.inputs.image-tag }}
           EOF
