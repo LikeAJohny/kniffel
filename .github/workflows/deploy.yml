@@ -31,7 +31,7 @@ jobs:
               docker rm kniffel
             fi
           
-            docker login -u ${{ github.actor }} -p ${{ secrets.GHCR_PAT }} ${{ env.REGISTRY }}
+            echo ${{ secrets.GHCR_PAT }} | docker login -u ${{ github.actor }} ${{ env.REGISTRY }} --password-stdin
           
             docker pull ghcr.io/likeajohny/kniffel:${{ github.event.inputs.image-tag }}
           

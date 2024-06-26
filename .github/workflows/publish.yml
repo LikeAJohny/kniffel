@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Login
         run: |
-          docker login -u ${{ github.actor }} -p ${{ secrets.GHCR_PAT }} ${{ env.REGISTRY }}
+          echo ${{ secrets.GHCR_PAT }} | docker login -u ${{ github.actor }} ${{ env.REGISTRY }}
       - name: Publish
         env:
           IMAGE_NAME: ${{ env.REGISTRY }}/likeajohny/kniffel:${{ needs.tag-image.outputs.image-tag }}
