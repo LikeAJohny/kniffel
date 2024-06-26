@@ -27,7 +27,7 @@ jobs:
         env:
           IMAGE_NAME: ${{ env.REGISTRY }}/likeajohny/kniffel:${{ needs.tag-image.outputs.image-tag }}
         run: |
-          docker build . \
+          docker build . -f docker/Prod.Dockerfile \
             --build-arg PUBLIC_SUPABASE_URL=${{ secrets.PUBLIC_SUPABASE_URL }} \
             --build-arg PUBLIC_SUPABASE_ANON_KEY=${{ secrets.PUBLIC_SUPABASE_ANON_KEY }} \
             --build-arg ORIGIN=${{ secrets.PRODUCTION_DOMAIN }} \
