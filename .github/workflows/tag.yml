@@ -22,6 +22,6 @@ jobs:
             
             if (process.env.GITHUB_REF.startsWith(tagPrefix)) {
               return process.env.GITHUB_REF.slice(tagPrefix.length);
+            } else {
+              return 'latest';
             }
-            
-            return 'latest;
