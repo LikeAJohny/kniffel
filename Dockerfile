@@ -13,6 +13,7 @@ RUN npm install -g pnpm
 
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --production
+RUN pnpm build
 
 # production stage
 FROM node:alpine as production-stage
