@@ -16,6 +16,10 @@ RUN npm run build
 
 # production stage
 FROM node:lts as production-stage
+
+ARG ORIGIN
+ENV ORIGIN=$ORIGIN
+
 WORKDIR /app
 COPY --from=build-stage /app .
 CMD ["node", "-r", "dotenv/config", "build"]
