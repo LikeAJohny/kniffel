@@ -12,7 +12,9 @@ WORKDIR /app
 RUN npm install -g pnpm
 
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile --production
+RUN pnpm install --frozen-lockfile
+
+COPY . .
 RUN pnpm build
 
 # production stage
@@ -22,5 +24,12 @@ ARG ORIGIN
 ENV ORIGIN=$ORIGIN
 
 WORKDIR /app
-COPY --from=build-stage /app .
+
+COPY --from=build-stage /app/build ./build
+COPY --from=build-stage /app/package.json ./package.json
+COPY --from=build-stage /app/pnpm-lock.yaml ./pnpm-lock.yaml
+
+RUN npm install -g pnpm
+RUN pnpm install --frozen-lockfile --production
+
 CMD ["node", "-r", "dotenv/config", "build"]
