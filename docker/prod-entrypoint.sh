@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
+set -e
 
 ENV_TMPL=".env.dist"
 ENV_FILE=".env"
