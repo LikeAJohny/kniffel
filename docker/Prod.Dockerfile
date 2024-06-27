@@ -32,4 +32,4 @@ COPY --from=build-stage /app/pnpm-lock.yaml ./pnpm-lock.yaml
 RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile --production
 
-CMD ["node", "-r", "dotenv/config", "build"]
+CMD ["ORIGIN=$ORIGIN", "node", "-r", "dotenv/config", "build"]
