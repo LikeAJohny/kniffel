@@ -10,10 +10,10 @@ ENV PUBLIC_SUPABASE_ANON_KEY=$PUBLIC_SUPABASE_ANON_KEY
 
 WORKDIR /app
 
-RUN npm install -g pnpm
-
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+
+RUN npm install -g pnpm && \
+    pnpm install --frozen-lockfile
 
 COPY . .
 RUN pnpm build
@@ -27,11 +27,11 @@ COPY --from=build-stage /app/build ./build
 COPY --from=build-stage /app/package.json ./package.json
 COPY --from=build-stage /app/pnpm-lock.yaml ./pnpm-lock.yaml
 
-RUN npm install -g pnpm
-RUN pnpm install --frozen-lockfile --production
+RUN npm install -g pnpm && \
+    pnpm install --frozen-lockfile --production
 
-COPY docker/prod-entrypoint.sh ./
+COPY .env.dist docker/prod-entrypoint.sh ./
 RUN chmod +x prod-entrypoint.sh
 
-ENTRYPOINT ["/app/prod-entrypoint.sh"]
+ENTRYPOINT ["./prod-entrypoint.sh"]
 CMD ["node", "-r", "dotenv/config", "build"]
