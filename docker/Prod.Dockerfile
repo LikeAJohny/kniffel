@@ -1,9 +1,10 @@
-# build stage
 FROM node:alpine as build-stage
 
+ARG ORIGIN
 ARG PUBLIC_SUPABASE_URL
 ARG PUBLIC_SUPABASE_ANON_KEY
 
+ENV ORIGIN=$ORIGIN
 ENV PUBLIC_SUPABASE_URL=$PUBLIC_SUPABASE_URL
 ENV PUBLIC_SUPABASE_ANON_KEY=$PUBLIC_SUPABASE_ANON_KEY
 
@@ -17,11 +18,8 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm build
 
-# production stage
+# build for production
 FROM node:alpine as production-stage
-
-ARG ORIGIN
-ENV ORIGIN=$ORIGIN
 
 WORKDIR /app
 
@@ -32,4 +30,8 @@ COPY --from=build-stage /app/pnpm-lock.yaml ./pnpm-lock.yaml
 RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile --production
 
+COPY docker/prod-entrypoint.sh ./
+RUN chmod +x prod-entrypoint.sh
+
+ENTRYPOINT ["/app/prod-entrypoint.sh"]
 CMD ["node", "-r", "dotenv/config", "build"]
