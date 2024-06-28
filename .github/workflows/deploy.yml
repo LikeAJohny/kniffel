@@ -1,34 +1,29 @@
-name: Deploy
-
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
-      image-tag:
-        description: 'Tag of the image to deploy'
+      image-name:
+        description: 'Name of the image to deploy'
         required: true
-        default: 'latest'
-
-env:
-  REGISTRY: ghcr.io
+        type: string
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.5.3
+        uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy application
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} -p ${{ secrets.SSH_PORT }} << 'EOF'
-            echo ${{ secrets.GHCR_PAT }} | docker login -u ${{ github.actor }} ${{ env.REGISTRY }} --password-stdin
+            echo ${{ secrets.GHCR_PAT }} | docker login -u ${{ github.actor }} ghcr.io --password-stdin
           
-            docker pull ghcr.io/likeajohny/kniffel:${{ github.event.inputs.image-tag }}
+            docker pull ${{ inputs.image-name }}
           
             docker logout ${{ env.REGISTRY }}
           EOF
