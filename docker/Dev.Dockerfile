@@ -1,4 +1,4 @@
-FROM node:alpine as development-stage
+FROM node:alpine
 
 WORKDIR /app
 
