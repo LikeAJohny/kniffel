@@ -17,5 +17,9 @@ jobs:
           echo ${{ secrets.GHCR_PAT }} | docker login -u ${{ github.actor }} ghcr.io --password-stdin
       - name: Publish
         run: |
-          docker build . -f docker/Prod.Dockerfile -t ${{ inputs.image-name }}
+          docker build . -f docker/Prod.Dockerfile \
+            --build-arg PUBLIC_SUPABASE_URL=${{ secrets.PUBLIC_SUPABASE_URL }} \
+            --build-arg PUBLIC_SUPABASE_ANON_KEY=${{ secrets.PUBLIC_SUPABASE_ANON_KEY }} \
+            --build-arg ORIGIN=${{ secrets.PRODUCTION_DOMAIN }} \
+            -t ${{ inputs.image-name }}
           docker push ${{ inputs.image-name }}
