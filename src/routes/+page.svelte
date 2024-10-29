@@ -1,9 +1,13 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import NewSession from '@components/NewSession.svelte';
 
-	export let data;
-	let { player, variants } = data;
-	$: ({ player, variants } = data);
+	let { data } = $props();
+	let { player, variants } = $state(data);
+	run(() => {
+		({ player, variants } = data);
+	});
 </script>
 
 <section class="new-game">

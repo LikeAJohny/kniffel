@@ -1,8 +1,12 @@
 <script>
-	export let data;
+	import { run } from 'svelte/legacy';
 
-	let { kniffelSessions, kniffelExtremeSessions } = data;
-	$: ({ kniffelSessions, kniffelExtremeSessions } = data);
+	let { data } = $props();
+
+	let { kniffelSessions, kniffelExtremeSessions } = $state(data);
+	run(() => {
+		({ kniffelSessions, kniffelExtremeSessions } = data);
+	});
 
 	console.log(kniffelSessions, kniffelExtremeSessions);
 </script>

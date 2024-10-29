@@ -6,7 +6,11 @@
 	import BoolField from './BoolField.svelte';
 	import type { KniffelExtremeGame } from '@/types/kniffel';
 
-	export let number: number;
+	interface Props {
+		number: number;
+	}
+
+	let { number }: Props = $props();
 
 	const { scores, results, game } = createGame(number);
 	const dispatch = createEventDispatcher();

@@ -19,9 +19,9 @@
 			{#if $settings.sideBarMode === SideBarMode.FULL}
 				{#if boardField.image}
 					<div class="image">
-						<i class={boardField.image} />
-						<i class={boardField.image} />
-						<i class={boardField.image} />
+						<i class={boardField.image}></i>
+						<i class={boardField.image}></i>
+						<i class={boardField.image}></i>
 					</div>
 				{:else}
 					<div class="title">
@@ -33,7 +33,7 @@
 			{#if $settings.sideBarMode === SideBarMode.COLLAPSED}
 				{#if boardField.image}
 					<div class="image">
-						<i class={boardField.image} />
+						<i class={boardField.image}></i>
 					</div>
 				{:else}
 					<div class="title">
@@ -46,10 +46,10 @@
 	<div class="field-info">
 		{#if $settings.sideBarMode === SideBarMode.FULL}
 			<div class="title">Gesamt</div>
-			<div class="rule"><i class="fa-solid fa-greater-than" /></div>
+			<div class="rule"><i class="fa-solid fa-greater-than"></i></div>
 		{:else}
 			<div class="title">
-				<i class="fa-regular fa-equals" />
+				<i class="fa-regular fa-equals"></i>
 			</div>
 		{/if}
 	</div>
@@ -59,17 +59,17 @@
 			<div class="rule">Plus 45</div>
 		{:else}
 			<div class="title">
-				<i class="fa-solid fa-plus" />
+				<i class="fa-solid fa-plus"></i>
 			</div>
 		{/if}
 	</div>
 	<div class="field-info">
 		{#if $settings.sideBarMode === SideBarMode.FULL}
 			<div class="title">Gesamt oberer Teil</div>
-			<div class="rule"><i class="fa-solid fa-greater-than" /></div>
+			<div class="rule"><i class="fa-solid fa-greater-than"></i></div>
 		{:else}
 			<div class="title">
-				<i class="fa-solid fa-equals" />
+				<i class="fa-solid fa-equals"></i>
 			</div>
 		{/if}
 	</div>
@@ -85,7 +85,7 @@
 			{#if $settings.sideBarMode === SideBarMode.COLLAPSED}
 				{#if boardField.image}
 					<div class="image">
-						<i class={boardField.image} />
+						<i class={boardField.image}></i>
 					</div>
 				{:else}
 					<div class="title">
@@ -99,31 +99,31 @@
 		{#if $settings.sideBarMode === SideBarMode.FULL}
 			<div class="title">Gesamt unterer Teil</div>
 			<div class="rule">
-				<i class="fa-solid fa-greater-than" />
+				<i class="fa-solid fa-greater-than"></i>
 			</div>
 		{:else}
 			<div class="title">
-				<i class="fa-regular fa-equals" />
+				<i class="fa-regular fa-equals"></i>
 			</div>
 		{/if}
 	</div>
 	<div class="field-info">
 		{#if $settings.sideBarMode === SideBarMode.FULL}
 			<div class="title">Gesamt oberer Teil</div>
-			<div class="rule"><i class="fa-solid fa-greater-than" /></div>
+			<div class="rule"><i class="fa-solid fa-greater-than"></i></div>
 		{:else}
 			<div class="title">
-				<i class="fa-regular fa-equals" />
+				<i class="fa-regular fa-equals"></i>
 			</div>
 		{/if}
 	</div>
 	<div class="field-info">
 		{#if $settings.sideBarMode === SideBarMode.FULL}
 			<div class="title">Endsumme</div>
-			<div class="rule"><i class="fa-solid fa-greater-than" /></div>
+			<div class="rule"><i class="fa-solid fa-greater-than"></i></div>
 		{:else}
 			<div class="title">
-				<i class="fa-solid fa-flag-checkered" />
+				<i class="fa-solid fa-flag-checkered"></i>
 			</div>
 		{/if}
 	</div>

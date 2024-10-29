@@ -4,7 +4,7 @@
 	import iconOpen from '@assets/icon-hamburger.svg';
 	import ThemeSwitcher from './ThemeSwitcher.svelte';
 
-	let navOpen = false;
+	let navOpen = $state(false);
 
 	function clickNavigation() {
 		setTimeout(() => (navOpen = !navOpen), 100);
@@ -21,7 +21,7 @@
 				aria-controls="primary-navigation"
 				aria-expanded={navOpen ? 'true' : 'false'}
 				class="mobile-nav-toggle"
-				on:click={clickNavigation}
+				onclick={clickNavigation}
 			>
 				<img
 					alt=""
@@ -42,20 +42,20 @@
 			<nav id="primary-navigation" class="primary-navigation" class:visible={navOpen}>
 				<ul class="nav-list" aria-label="Primary">
 					<li>
-						<a href="/" class="btn" on:click={clickNavigation}>Neues Spiel</a>
+						<a href="/" class="btn" onclick={clickNavigation}>Neues Spiel</a>
 					</li>
 					<li>
-						<a href="/play" on:click={clickNavigation}>Aktives Spiel</a>
+						<a href="/play" onclick={clickNavigation}>Aktives Spiel</a>
 					</li>
 					<li>
-						<a href="/sessions" on:click={clickNavigation}>Gespielte Spiele</a>
+						<a href="/sessions" onclick={clickNavigation}>Gespielte Spiele</a>
 					</li>
 					{#if !$page.data.session}
 						<li>
-							<a href="/login" on:click={clickNavigation}>Anmelden</a>
+							<a href="/login" onclick={clickNavigation}>Anmelden</a>
 						</li>
 						<li>
-							<a href="/signup" on:click={clickNavigation}>Registrieren</a>
+							<a href="/signup" onclick={clickNavigation}>Registrieren</a>
 						</li>
 					{/if}
 					{#if $page.data.session}

@@ -19,7 +19,7 @@
 </script>
 
 {#if $session.status === 'finished'}
-	<button on:click={handleSave}>Save Session</button>
+	<button onclick={handleSave}>Save Session</button>
 {/if}
 
 <div id="sheet">
@@ -39,9 +39,9 @@
 				<div class="field-info">
 					{#if boardField.image}
 						<div class="image">
-							<i class="fa-solid fa-{boardField.image}" />
-							<i class="fa-solid fa-{boardField.image}" />
-							<i class="fa-solid fa-{boardField.image}" />
+							<i class="fa-solid fa-{boardField.image}"></i>
+							<i class="fa-solid fa-{boardField.image}"></i>
+							<i class="fa-solid fa-{boardField.image}"></i>
 						</div>
 					{:else}
 						<div class="title">
@@ -68,9 +68,9 @@
 				<div class="field-info">
 					{#if boardField.image}
 						<div class="image">
-							<i class="fa-solid fa-{boardField.image}" />
-							<i class="fa-solid fa-{boardField.image}" />
-							<i class="fa-solid fa-{boardField.image}" />
+							<i class="fa-solid fa-{boardField.image}"></i>
+							<i class="fa-solid fa-{boardField.image}"></i>
+							<i class="fa-solid fa-{boardField.image}"></i>
 						</div>
 					{:else}
 						<div class="title">

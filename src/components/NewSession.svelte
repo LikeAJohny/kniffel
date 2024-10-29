@@ -3,11 +3,15 @@
 	import type { Player, Variant } from '@/types/kniffel';
 	import { session } from '@stores/session.store';
 
-	export let player: Player;
-	export let variants: Variant[];
+	interface Props {
+		player: Player;
+		variants: Variant[];
+	}
 
-	let variant: Variant = variants[0];
-	let numberOfGames = 1;
+	let { player, variants }: Props = $props();
+
+	let variant: Variant = $state(variants[0]);
+	let numberOfGames = $state(1);
 
 	function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
@@ -18,7 +22,7 @@
 	}
 </script>
 
-<form method="get" action="/play" on:submit={handleSubmit}>
+<form method="get" action="/play" onsubmit={handleSubmit}>
 	<label for="variant">
 		<select name="variant" id="variant" bind:value={variant} required>
 			{#each variants as variant}

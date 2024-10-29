@@ -1,14 +1,18 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import '@assets/reset.scss';
 	import '@assets/theme.scss';
 	import Header from '@components/ui/Header.svelte';
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 
-	export let data;
+	let { data, children } = $props();
 
-	let { supabase, session } = data;
-	$: ({ supabase, session } = data);
+	let { supabase, session } = $state(data);
+	run(() => {
+		({ supabase, session } = data);
+	});
 
 	onMount(() => {
 		const {
@@ -25,6 +29,6 @@
 
 <Header />
 <main>
-	<slot />
+	{@render children?.()}
 </main>
-<footer />
+<footer></footer>

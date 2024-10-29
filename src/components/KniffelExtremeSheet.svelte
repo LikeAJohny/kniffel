@@ -19,7 +19,7 @@
 </script>
 
 {#if $session.status === 'finished'}
-	<button on:click={handleSave}>Save Session</button>
+	<button onclick={handleSave}>Save Session</button>
 {/if}
 
 <div id="sheet">

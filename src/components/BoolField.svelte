@@ -1,8 +1,12 @@
 <script lang="ts">
-	export let name: string;
-	export let score = 0;
-	export let value: number | null = null;
-	let choiceOpen = false;
+	interface Props {
+		name: string;
+		score?: number;
+		value?: number | null;
+	}
+
+	let { name, score = 0, value = $bindable(null) }: Props = $props();
+	let choiceOpen = $state(false);
 
 	function strike() {
 		value = 0;
@@ -17,8 +21,8 @@
 
 <div class="field">
 	<div class="choice" class:open={choiceOpen}>
-		<button class="strike" on:click={strike}>✖︎</button>
-		<button class="check" on:click={check}>✔︎</button>
+		<button class="strike" onclick={strike}>✖︎</button>
+		<button class="check" onclick={check}>✔︎</button>
 	</div>
 	<input
 		type="number"
@@ -26,8 +30,8 @@
 		id={name}
 		inputmode="none"
 		bind:value
-		on:focusin={() => (choiceOpen = true)}
-		on:focusout={() => setTimeout(() => (choiceOpen = false), 100)}
+		onfocusin={() => (choiceOpen = true)}
+		onfocusout={() => setTimeout(() => (choiceOpen = false), 100)}
 	/>
 </div>
 
